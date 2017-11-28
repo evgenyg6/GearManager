@@ -1,27 +1,30 @@
 $(document).ready(function() {
 
 
-    if (window.location.href.indexOf("code") > -1) {
+  if (window.location.href.indexOf("code") > -1) {
       var url = window.location.href
       var OAuth= url.split('?code=')[1]
       var data = {
         grant_type: 'authorization_code',
-        code: OAuth
+        code: OAuth,
+        client_id: '22868'
       }
       var headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
 
-      return $http({
-			method: 'POST',
-			url: 'https://www.bungie.net/Platform/App/OAuth/Token/',
-			headers: headers,
-			data: data
-			//transformRequest: false
-
-		}).then(function(response) {
-			var info = response.data;
-			console.log('GetOAuthAccessToken', info);
-    }
+    $.ajax({
+            type: "POST",
+            url: 'https://www.bungie.net/Platform/App/OAuth/Token/',
+            data: data,
+            contentType: "application/x-www-form-urlencoded", // this
+            dataType: "json", // and this
+            success: function (msg) {
+              console.log(msg)
+            },
+            error: function (errormessage) {
+                console.log(errormessage)
+            }
+        });
   }
 });
