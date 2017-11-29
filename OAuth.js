@@ -28,7 +28,7 @@ $(document).ready(function() {
           $.ajax({
                type: 'GET',
                headers: headers,
-               url: "https://www.bungie.net/Platform/User/GetMembershipsForCurrentUser/",
+               url: "https://www.bungie.net/Destiny2/4/Profile/4611686018467569204/",
                success: function(response) {
                  console.log(response);
                },
