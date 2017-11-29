@@ -27,7 +27,7 @@ $(document).ready(function() {
               $.ajax({
                type: 'GET',
                url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
-               Authorization: Bearer token,
+               Authorization: Bearer + token,
                headers: {
                 "X-API-Key": apiKey
                }
