@@ -16,36 +16,21 @@ $(document).ready(function() {
             url: 'https://www.bungie.net/Platform/App/OAuth/Token/',
             data: data,
             success: function (msg) {
-              console.log(msg)
-              var data = JSON.stringify(msg);
-              var token = Object.keys(data)[0];
-              var bearer = Object.keys(data)[2]
-              console.log(data);
-              console.log(token);
-              console.log(bearer)
-
-              console.log(bearer + " " + token)
-
-              console.log(Object.values(msg)[0])
-              console.log(Object.values(msg)[1])
-              console.log(Object.values(msg)[2])
-              console.log(Object.values(msg)[3])
-
-              var bear = Object.values(msg)[1];
-              var toke = Object.values(msg)[0];
-              console.log(bear + " " + toke)
+              var bearer = Object.values(msg)[1];
+              var token = Object.values(msg)[0];
               var apiKey = "9a29535463e94dd284e033d5618eb1d5";
 
               $.ajax({
                type: 'GET',
                url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
-               Authorization: bearer + " " + token,
+               Authorization: bear + " " + toke,
                data: {
                 "X-API-Key": apiKey
+               },
+               success: function(json) {
+                 console.log(json.Response);
                }
-              }).done(function(json){
-               console.log(json.Response);
-              });
+              })
 
 
 
