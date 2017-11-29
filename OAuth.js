@@ -1,5 +1,17 @@
 $(document).ready(function() {
 
+function destiny() {
+var apiKey = "9a29535463e94dd284e033d5618eb1d5";
+
+$.ajax({
+ url: "https://www.bungie.net/platform/Destiny2/Manifest/",
+ headers: {
+  "X-API-Key": apiKey
+ }
+}).done(function(json){
+ console.log(json.Response);
+});
+}
 
   if (window.location.href.indexOf("code") > -1) {
       var url = window.location.href
@@ -17,7 +29,7 @@ $(document).ready(function() {
             data: data,
             success: function (msg) {
               console.log(msg)
-              window.location.replace("https://ilsilentii.github.io/GearManager/");
+              destiny();
             },
             error: function (errormessage) {
                 console.log(errormessage)
