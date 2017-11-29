@@ -29,9 +29,9 @@ $(document).ready(function() {
                url: "https://www.bungie.net/Platform/User/GetMembershipsForCurrentUser/",
                success: function(response) {
                  console.log(response);
-                 console.log(response.destinyMemberships.membershipId);
-                 console.log(response.destinyMemberships[0]);
-                 console.log(response.destinyMemberships[1]);
+                 var obj = JSON.stringify(response);
+                 console.log(obj)
+              
                },
                error: function(err) {
                  console.log(err);
