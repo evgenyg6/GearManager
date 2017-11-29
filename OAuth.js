@@ -2,9 +2,9 @@ $(document).ready(function() {
 
 function destiny() {
 var apiKey = "9a29535463e94dd284e033d5618eb1d5";
-
 $.ajax({
- url: "https://www.bungie.net/platform/Destiny2/4/Profile/52388da8/",
+ type: 'GET'
+ url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
  headers: {
   "X-API-Key": apiKey
  }
@@ -29,7 +29,29 @@ $.ajax({
             data: data,
             success: function (msg) {
               console.log(msg)
-              destiny();
+              var data = JSON.stringify(msg);
+              var token = data.access_token
+
+
+
+              /*
+              var apiKey = "9a29535463e94dd284e033d5618eb1d5";
+
+              $.ajax({
+               type: 'GET'
+               url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
+               Authorization: Bearer {access-token}
+               headers: {
+                "X-API-Key": apiKey
+               }
+              }).done(function(json){
+               console.log(json.Response);
+              });
+
+
+              */
+
+
             },
             error: function (errormessage) {
                 console.log(errormessage)
