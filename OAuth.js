@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  var apiKey = "9a29535463e94dd284e033d5618eb1d5";
 
   if (window.location.href.indexOf("code") > -1) {
       var url = window.location.href
@@ -16,9 +16,7 @@ $(document).ready(function() {
             url: 'https://www.bungie.net/Platform/App/OAuth/Token/',
             data: data,
             success: function (msg) {
-              var bearer = Object.values(msg)[1];
               var accessToken = Object.values(msg)[0];
-              var apiKey = "9a29535463e94dd284e033d5618eb1d5";
 
               const headers = {
                   Authorization: 'Bearer ' + accessToken,
@@ -28,7 +26,7 @@ $(document).ready(function() {
           $.ajax({
                type: 'GET',
                headers: headers,
-               url: "https://www.bungie.net/Platform/Destiny2/4/Profile/4611686018467569204/?components=100 ",
+               url: "https://www.bungie.net/Platform/User/GetMembershipsForCurrentUser/",
                success: function(response) {
                  console.log(response);
                },
@@ -47,4 +45,7 @@ $(document).ready(function() {
             }
         });
   }
+
+
+
 });
