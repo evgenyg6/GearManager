@@ -17,18 +17,17 @@ $(document).ready(function() {
             data: data,
             success: function (msg) {
               var bearer = Object.values(msg)[1];
-              var token = Object.values(msg)[0];
+              var accessToken = Object.values(msg)[0];
               var apiKey = "9a29535463e94dd284e033d5618eb1d5";
 
-              var user = {
-                token_type: 'bearer',
-                Authorization: token,
-                'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
-              }
+              const headers = {
+                  Authorization: 'Bearer ' + accessToken,
+                  'X-API-Key': apiKey
+                };
 
-              $.ajax({
+          $.ajax({
                type: 'GET',
-               data: user,
+               data: headers,
                url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
                success: function(response) {
                  console.log(response);
