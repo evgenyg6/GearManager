@@ -28,8 +28,8 @@ $(document).ready(function() {
                type: 'GET',
                url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
                data:user,
-               success: function(json) {
-                 console.log(json.Response);
+               success: function(response) {
+                 console.log(response);
                },
                error: function(err) {
                  console.log(err);
