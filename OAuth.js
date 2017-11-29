@@ -4,7 +4,7 @@ function destiny() {
 var apiKey = "9a29535463e94dd284e033d5618eb1d5";
 
 $.ajax({
- url: "https://www.bungie.net/platform/Destiny2/Manifest/",
+ url: "https://www.bungie.net/platform/Destiny2/4/Profile/52388da8/",
  headers: {
   "X-API-Key": apiKey
  }
