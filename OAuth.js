@@ -32,7 +32,7 @@ $.ajax({
               var data = JSON.stringify(msg);
               var token = data.access_token
 
-
+              console.log(token)
 
               /*
               var apiKey = "9a29535463e94dd284e033d5618eb1d5";
