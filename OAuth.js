@@ -26,11 +26,14 @@ $(document).ready(function() {
 
               console.log(bearer + " " + token)
 
-              console.log(Object.keys(msg)[0])
-              console.log(Object.keys(msg)[1])
-              console.log(Object.keys(msg)[2])
-              console.log(Object.keys(msg)[3])
+              console.log(Object.values(msg)[0])
+              console.log(Object.values(msg)[1])
+              console.log(Object.values(msg)[2])
+              console.log(Object.values(msg)[3])
 
+              var bear = Object.values(msg)[1];
+              var toke = Object.values(msg)[0];
+              console.log(bear + " " + toke)
               var apiKey = "9a29535463e94dd284e033d5618eb1d5";
 
               $.ajax({
