@@ -28,7 +28,7 @@ $(document).ready(function() {
           $.ajax({
                type: 'GET',
                headers: headers,
-               url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
+               url: "https://www.bungie.net/Platform/User/GetMembershipsForCurrentUser/",
                success: function(response) {
                  console.log(response);
                },
