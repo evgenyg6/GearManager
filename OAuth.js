@@ -24,10 +24,10 @@ $(document).ready(function() {
                 'Authorization': 'bearer ' + token,
                 'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
               }
+
               $.ajax({
                type: 'GET',
-               url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
-               data:user,
+               url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/"
                success: function(response) {
                  console.log(response);
                },
