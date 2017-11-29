@@ -23,7 +23,7 @@ $(document).ready(function() {
               $.ajax({
                type: 'GET',
                url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
-               Authorization: bear + " " + toke,
+               Authorization: bearer + " " + token,
                data: {
                 "X-API-Key": apiKey
                },
