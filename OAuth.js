@@ -21,7 +21,7 @@ $(document).ready(function() {
               var apiKey = "9a29535463e94dd284e033d5618eb1d5";
 
               var user = {
-                token_type: 'bearer'
+                token_type: 'bearer',
                 Authorization: token,
                 'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
               }
