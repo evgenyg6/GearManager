@@ -1,24 +1,24 @@
 $(document).ready(function() {
 
 
-  if (window.location.href.indexOf("code") > -1) {
+//  if (window.location.href.indexOf("code") > -1) {
       var url = window.location.href
       var OAuth= url.split('?code=')[1]
       var data = {
         grant_type: 'authorization_code',
-        code: OAuth,
-        client_id: '22868'
+        code: '7fcf39c0cce97b00a0c16d1efcd3d5fb',
+        client_id: '22868',
+        'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
       }
       var headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        contentType: 'application/x-www-form-urlencoded',
+        'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
       }
 
     $.ajax({
             type: "POST",
             url: 'https://www.bungie.net/Platform/App/OAuth/Token/',
             data: data,
-            contentType: "application/x-www-form-urlencoded", // this
-            dataType: "json", // and this
             success: function (msg) {
               console.log(msg)
             },
@@ -26,5 +26,5 @@ $(document).ready(function() {
                 console.log(errormessage)
             }
         });
-  }
+//  }
 });
