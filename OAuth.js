@@ -1,17 +1,5 @@
 $(document).ready(function() {
 
-function destiny() {
-var apiKey = "9a29535463e94dd284e033d5618eb1d5";
-$.ajax({
- type: 'GET'
- url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
- headers: {
-  "X-API-Key": apiKey
- }
-}).done(function(json){
- console.log(json.Response);
-});
-}
 
   if (window.location.href.indexOf("code") > -1) {
       var url = window.location.href
