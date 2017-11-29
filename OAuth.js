@@ -10,10 +10,6 @@ $(document).ready(function() {
         client_id: '22868',
         'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
       }
-      var headers = {
-        contentType: 'application/x-www-form-urlencoded',
-        'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
-      }
 
     $.ajax({
             type: "POST",
@@ -21,6 +17,7 @@ $(document).ready(function() {
             data: data,
             success: function (msg) {
               console.log(msg)
+              window.location.replace("https://ilsilentii.github.io/GearManager/");
             },
             error: function (errormessage) {
                 console.log(errormessage)
