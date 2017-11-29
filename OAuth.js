@@ -26,13 +26,18 @@ $(document).ready(function() {
 
               console.log(bearer + " " + token)
 
+              console.log(Object.keys(msg)[0])
+              console.log(Object.keys(msg)[1])
+              console.log(Object.keys(msg)[2])
+              console.log(Object.keys(msg)[3])
+
               var apiKey = "9a29535463e94dd284e033d5618eb1d5";
 
               $.ajax({
                type: 'GET',
                url: "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/",
                Authorization: bearer + " " + token,
-               headers: {
+               data: {
                 "X-API-Key": apiKey
                }
               }).done(function(json){
