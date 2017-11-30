@@ -12,6 +12,21 @@ $(document).ready(function() {
     }
 
     $.ajax({
+      type: 'GET',
+      headers: {
+        'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
+      },
+      url: "https://www.bungie.net/Destiny2/Manifest/",
+      success: function(manifest) {
+          console.log(manifest)
+      },
+      error: function(err) {
+        console.log(err);
+      }
+
+    })
+
+    $.ajax({
       type: "POST",
       url: 'https://www.bungie.net/Platform/App/OAuth/Token/',
       data: data,
@@ -27,8 +42,8 @@ $(document).ready(function() {
           headers: headers,
           url: "https://www.bungie.net/Platform/User/GetMembershipsForCurrentUser/",
           success: function(response) {
-            let membershipType = response.Response.destinyMemberships[0].membershipType;
-            let membershipId = response.Response.destinyMemberships[0].membershipId;
+            let membershipType = response.Response.destinyMemberships[1].membershipType;
+            let membershipId = response.Response.destinyMemberships[1].membershipId;
             let characterUrl = "https://www.bungie.net/Platform/Destiny2/" + membershipType + "/Profile/" + membershipId + "/?components=200";
             let characterInv = "https://www.bungie.net/Platform/Destiny2/" + membershipType + "/Profile/" + membershipId + "/?components=201"
             let characterEquip = "https://www.bungie.net/Platform/Destiny2/" + membershipType + "/Profile/" + membershipId + "/?components=205"
