@@ -27,7 +27,7 @@ $(document).ready(function() {
         $.ajax({
           type: 'GET',
           headers: headers,
-          url: "https://www.bungie.net/Platform/Destiny2/Manifest/",
+          url: "https://www.bungie.net/common/destiny2_content/sqlite/en/world_sql_content_7ed5ecc0b6c7188a689f25e3ceabc57b.content",
           success: function(manifest) {
               console.log(manifest)
           },
