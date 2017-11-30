@@ -27,7 +27,7 @@ $(document).ready(function() {
         $.ajax({
           type: 'GET',
           headers: headers,
-          url: "https://www.bungie.net/Destiny2/Manifest/",
+          url: "https://www.bungie.net/Platform/Destiny2/Manifest/",
           success: function(manifest) {
               console.log(manifest)
           },
