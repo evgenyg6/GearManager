@@ -11,20 +11,7 @@ $(document).ready(function() {
       'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
     }
 
-    $.ajax({
-      type: 'GET',
-      headers: {
-        'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
-      },
-      url: "https://www.bungie.net/Destiny2/Manifest/",
-      success: function(manifest) {
-          console.log(manifest)
-      },
-      error: function(err) {
-        console.log(err);
-      }
 
-    })
 
     $.ajax({
       type: "POST",
@@ -36,6 +23,18 @@ $(document).ready(function() {
           Authorization: 'Bearer ' + accessToken,
           'X-API-Key': apiKey
         };
+
+        $.ajax({
+          type: 'GET',
+          headers: headers,
+          url: "https://www.bungie.net/Destiny2/Manifest/",
+          success: function(manifest) {
+              console.log(manifest)
+          },
+          error: function(err) {
+            console.log(err);
+          }
+        })
         // Grabs MembershipsForCurrentUser using above token
         $.ajax({
           type: 'GET',
