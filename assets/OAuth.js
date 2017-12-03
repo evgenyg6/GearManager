@@ -23,12 +23,12 @@ $(document).ready(function() {
             url: 'https://www.bungie.net/Platform/App/OAuth/Token/',
             data: data,
             success: function(object) {
-                const accessToken = Object.values(msg)[0];
+                const accessToken = Object.values(object)[0];
                 const headers = {
                     Authorization: 'Bearer ' + accessToken,
                     'X-API-Key': apiKey
                 };
-                currentUser(accessToken, headers);
+                currentUser(headers);
             },
             error: function(err) {
                 console.log(err);
@@ -36,7 +36,7 @@ $(document).ready(function() {
         })
     }
 
-    function currentUser(accessToken, headers) {
+    function currentUser(headers) {
         $.ajax({
             type: 'GET',
             headers: headers,
@@ -46,7 +46,7 @@ $(document).ready(function() {
                 var membershipType = object[Object.keys(object)[0]].destinyMemberships[1].membershipType
                 var getProfileURL = "https://www.bungie.net/Platform/Destiny2/" + membershipType + "/Profile/" + membershipId + "/?components=100"
 
-                getProfile(getProfileURL);
+                getProfile(headers, getProfileURL);
             },
             error: function(err) {
                 console.log(err);
@@ -54,7 +54,7 @@ $(document).ready(function() {
         })
     }
 
-    function getProfile(getProfileURL) {
+    function getProfile(headers, getProfileURL) {
         $.ajax({
             type: 'GET',
             headers: headers,
