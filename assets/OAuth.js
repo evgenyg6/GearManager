@@ -10,48 +10,64 @@ $(document).ready(function() {
             client_id: '22868',
             'X-API-Key': '9a29535463e94dd284e033d5618eb1d5'
         }
+        authorize(data);
+    }
 
+    function authorize(data) {
         $.ajax({
-            type: "POST",
+            type: 'POST',
             url: 'https://www.bungie.net/Platform/App/OAuth/Token/',
             data: data,
-            success: function(msg) {
-                var accessToken = Object.values(msg)[0];
-
+            success: function(object) {
+                const accessToken = Object.values(object)[0];
                 const headers = {
                     Authorization: 'Bearer ' + accessToken,
                     'X-API-Key': apiKey
                 };
-
-                $.ajax({
-                    type: 'GET',
-                    headers: headers,
-                    url: "https://www.bungie.net/Platform/User/GetMembershipsForCurrentUser/",
-                    success: function(object) {
-                        console.log(object);
-                        var membershipId = object[Object.keys(object)[0]].destinyMemberships[1].membershipId
-                        var membershipType = object[Object.keys(object)[0]].destinyMemberships[1].membershipType
-                        var getProfileURL = "https://www.bungie.net/Platform/Destiny2/"+membershipType+"/Profile/"+membershipId+"/?components=100"
-                        $.ajax({
-                            type: 'GET',
-                            headers: headers,
-                            url: getProfileURL,
-                            success: function(object) {
-                                console.log(object);
-                            },
-                            error: function(err) {
-                                console.log(err);
-                            }
-                        })
-                    },
-                    error: function(err) {
-                        console.log(err);
-                    }
-                })
+                console.log(headers);
+                currentUser(headers);
             },
-            error: function(errormessage) {
-                console.log(errormessage)
+            error: function(err) {
+                console.log(err);
             }
-        });
+        })
     }
+
+    function currentUser(headers) {
+        $.ajax({
+            type: 'GET',
+            headers: headers,
+            url: "https://www.bungie.net/Platform/User/GetMembershipsForCurrentUser/",
+            success: function(object) {
+                var displayName = object[Object.keys(object)[0]].destinyMemberships[1].displayName
+                var membershipId = object[Object.keys(object)[0]].destinyMemberships[1].membershipId
+                var membershipType = object[Object.keys(object)[0]].destinyMemberships[1].membershipType
+                var getProfileURL = "https://www.bungie.net/Platform/Destiny2/" + membershipType + "/Profile/" + membershipId + "/?components=100"
+
+                $('<span>'+ displayName + '</span').addClass('displayName').appendTo('#container')
+                getProfile(headers, getProfileURL);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    }
+
+    function getProfile(headers, getProfileURL) {
+        $.ajax({
+            type: 'GET',
+            headers: headers,
+            url: getProfileURL,
+            success: function(object) {
+                console.log(object);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    }
+
+
+
+
 });
