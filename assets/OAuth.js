@@ -44,7 +44,7 @@ $(document).ready(function() {
                 var membershipType = object[Object.keys(object)[0]].destinyMemberships[1].membershipType
                 var getProfileURL = "https://www.bungie.net/Platform/Destiny2/" + membershipType + "/Profile/" + membershipId + "/?components=100"
 
-                $('<span>'+ displayName + '</span').addClass('displayName').appendTo('#container')
+                $('<span>'+ displayName + '</span>').addClass('displayName').appendTo('#container')
                 getProfile(headers, getProfileURL);
             },
             error: function(err) {
