@@ -121,6 +121,14 @@ body {
   height: 5em;
 }
 
+.displayName {
+  position: absolute;
+  color:#727272;
+  top:70%;
+  left:15%;
+  font-size:5em;
+}
+
 .kinetic {
   position: absolute;
   top:25%;
