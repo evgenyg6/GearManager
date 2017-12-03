@@ -1,0 +1,253 @@
+.background {
+  position: fixed;
+  z-index: -1;
+}
+
+body {
+  margin:0;
+  padding:0;
+  font-family: 'Titillium Web', sans-serif;
+  cursor:url(../media/images/arrow.png), auto;
+}
+
+.nav {
+  width:100vw;
+  height:2em;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.glimmer {
+  color:white;
+  position: absolute;
+  left:81.8%;
+  top:0.3%;
+}
+
+.glimmer_image {
+  position: absolute;
+  left:80%;
+  top:0.3%;
+}
+
+.shard {
+  color:white;
+  position: absolute;
+  left:87.3%;
+  top:0.3%;
+}
+
+.shard_image {
+  position: absolute;
+  left:85.5%;
+  top:0.4%;
+}
+
+.brightdust {
+  color:white;
+  position: absolute;
+  left:91.4%;
+  top:0.3%;
+}
+
+.brightdust_image {
+  position: absolute;
+  left:89.6%;
+  top:0.4%;
+}
+
+.selectChar {
+  position: absolute;
+  top:8%;
+  left:7.5%;
+  font-size:22px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-color: #727272;
+  color:#727272;
+}
+
+.character1:hover, .character2:hover, .character3:hover {
+  border: 1px solid #727272;
+}
+
+.characterSelect {
+  position: absolute;
+  left:3.75%;
+  top:13.5%;
+  width:20.4%;
+  height:5.5em;
+  border:2px solid #727272;
+}
+
+.characterSelect2 {
+  position: absolute;
+  left:3.75%;
+  top:23.5%;
+  width:20.4%;
+  height:5.5em;
+  border:2px solid #727272;
+}
+
+.characterSelect3 {
+  position: absolute;
+  left:3.75%;
+  top:33.5%;
+  width:20.4%;
+  height:5.5em;
+  border:2px solid #727272;
+}
+
+.character1 {
+  position: absolute;
+  top:14%;
+  left:4%;
+  height: 5em;
+}
+
+.character2 {
+  position: absolute;
+  top:24%;
+  left:4%;
+  height: 5em;
+}
+
+.character3 {
+  position: absolute;
+  top:34%;
+  left:4%;
+  height: 5em;
+}
+
+.kinetic {
+  position: absolute;
+  top:25%;
+  left:45%;
+  width:5.5em;
+  height:5.5em;
+  border: 3px solid #b8b8b8;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/36ff239bd2629635c04f08a6487d1eed.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.energy {
+  position: absolute;
+  top:38.5%;
+  left:45%;
+  width:5.5em;
+  height:5.5em;
+  border: 3px solid #b8b8b8;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/2b85cf0c8f471a7ea679c210c19407b0.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.power {
+  position: absolute;
+  top:52%;
+  left:45%;
+  width:5.5em;
+  height:5.5em;
+  border: 3px solid #b8b8b8;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/5cefa0c5b68517dc08981da1d6bb4a73.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.ghost {
+  position: absolute;
+  top:65.5%;
+  left:45%;
+  width:5.5em;
+  height:5.5em;
+  border: 3px solid #b8b8b8;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/2ae2382ba7cca3c080c2256b121fa8ce.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.subclass {
+  position: absolute;
+  top:6%;
+  left:43.4%;
+  width:10em;
+  height:10em;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/65b8cf7ea8c5cc99b32236fb397ba56e.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.helmet {
+  position: absolute;
+  top:12%;
+  left:79%;
+  width:5.5em;
+  height:5.5em;
+  border: 3px solid #b8b8b8;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/c6a46488f2a30020025bd2adad5aa54b.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.gauntlet {
+  position: absolute;
+  top:25.5%;
+  left:79%;
+  width:5.5em;
+  height:5.5em;
+  border: 3px solid #b8b8b8;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/a11c0abd3b5a9d9ac128ff37aec61425.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.chest {
+  position: absolute;
+  top:39%;
+  left:79%;
+  width:5.5em;
+  height:5.5em;
+  border: 3px solid #b8b8b8;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/ed5ff280e9b77e5210cdeb6b0008eebb.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.leg {
+  position: absolute;
+  top:52.5%;
+  left:79%;
+  width:5.5em;
+  height:5.5em;
+  border: 3px solid #b8b8b8;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/dec8bdf6b2ca212be328aeb9e43de57e.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.classArmor {
+  position: absolute;
+  top:66%;
+  left:79%;
+  width:5.5em;
+  height:5.5em;
+  border: 3px solid #b8b8b8;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/7f4e75db3f2763a0b33f9ff7652e5dd1.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.clanBanner {
+  position: absolute;
+  top:79.5%;
+  left:79%;
+  width:5.5em;
+  height:5.5em;
+  border: 3px solid #b8b8b8;
+  background-image:url('https://www.bungie.net/common/destiny2_content/icons/2c9b1a4c6b2b3eab638abfbccbbfdd77.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}

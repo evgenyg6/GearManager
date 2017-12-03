@@ -1,0 +1,19 @@
+#border {
+    display: none;
+}
+
+#border2 {
+    display: none;
+}
+
+#border3 {
+    display:none;
+}
+
+.character1:hover #border {
+    display: block;
+}
+
+.character2:hover #border2 {
+    display: block;
+}
