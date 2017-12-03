@@ -79,12 +79,10 @@ $(document).ready(function() {
                 var glimmer = object[Object.keys(object)[0]].profileCurrencies.data.items[0].quantity
                 var shard = object[Object.keys(object)[0]].profileCurrencies.data.items[1].quantity
                 var brightdust = object[Object.keys(object)[0]].profileCurrencies.data.items[2].quantity
-                console.log(glimmer);
-                console.log(shard);
-                console.log(brightdust);
-                $('<span>'+ whatevertheobjectis + '</span>').addClass('glimmer').appendTo('.nav');
-                $('<span>'+ whatevertheobjectis + '</span>').addClass('shard').appendTo('.nav');
-                $('<span>'+ whatevertheobjectis + '</span>').addClass('brightdust').appendTo('.nav');
+
+                $('<span>'+ glimmer + '</span>').addClass('glimmer').appendTo('.nav');
+                $('<span>'+ shard + '</span>').addClass('shard').appendTo('.nav');
+                $('<span>'+ brightdust + '</span>').addClass('brightdust').appendTo('.nav');
 
             },
             error: function(err) {
