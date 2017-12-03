@@ -25,7 +25,8 @@ $(document).ready(function() {
                     'X-API-Key': apiKey
                 };
                 console.log(headers);
-                currentUser(headers);
+                getCurrentUser(headers);
+                getCurrency(headers);
             },
             error: function(err) {
                 console.log(err);
@@ -33,7 +34,7 @@ $(document).ready(function() {
         })
     }
 
-    function currentUser(headers) {
+    function getCurrentUser(headers) {
         $.ajax({
             type: 'GET',
             headers: headers,
@@ -58,6 +59,20 @@ $(document).ready(function() {
             type: 'GET',
             headers: headers,
             url: getProfileURL,
+            success: function(object) {
+                console.log(object);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    }
+
+    function getCurrency(headers) {
+        $.ajax({
+            type: 'GET',
+            headers: headers,
+            url: 'https://www.bungie.net/Platform/Destiny2/4/Profile/4611686018467569204/?components=103',
             success: function(object) {
                 console.log(object);
             },
