@@ -76,9 +76,9 @@ $(document).ready(function() {
             url: 'https://www.bungie.net/Platform/Destiny2/4/Profile/4611686018467569204/?components=103',
             success: function(object) {
                 console.log(object);
-                var glimmer = object[Object.keys(object)[0]].data.items[0].quantity
-                var shard = object[Object.keys(object)[0]].data.items[1].quantity
-                var brightdust = object[Object.keys(object)[0]].data.items[2].quantity
+                var glimmer = object[Object.keys(object)[0]].profileCurrencies.data.items[0].quantity
+                var shard = object[Object.keys(object)[0]].profileCurrencies.data.items[1].quantity
+                var brightdust = object[Object.keys(object)[0]].profileCurrencies.data.items[2].quantity
                 console.log(glimmer);
                 console.log(shard);
                 console.log(brightdust);
