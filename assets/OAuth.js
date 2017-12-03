@@ -60,7 +60,7 @@ $(document).ready(function() {
             url: getProfileURL,
             success: function(object) {
                 console.log(object);
-                window.location.replace("https://ilsilentii.github.io/GearManager/character");
+
             },
             error: function(err) {
                 console.log(err);
