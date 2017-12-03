@@ -40,6 +40,7 @@ $(document).ready(function() {
             headers: headers,
             url: "https://www.bungie.net/Platform/User/GetMembershipsForCurrentUser/",
             success: function(object) {
+                console.log(object)
                 var displayName = object[Object.keys(object)[0]].destinyMemberships[1].displayName
                 var membershipId = object[Object.keys(object)[0]].destinyMemberships[1].membershipId
                 var membershipType = object[Object.keys(object)[0]].destinyMemberships[1].membershipType
