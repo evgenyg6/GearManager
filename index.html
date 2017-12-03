@@ -3,11 +3,29 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="bungie.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,700" rel="stylesheet">
+    <script src="OAuth.js"></script>
+
     <title>GearManager</title>
   </head>
   <body>
-    <a href="https://www.bungie.net/en/OAuth/Authorize?client_id=22868&response_type=code"><span>Authorize with Bungie.net</span></a>
+    <!-- <a href="https://www.bungie.net/en/OAuth/Authorize?client_id=22868&response_type=code"><span>Authorize with Bungie.net</span></a> -->
+    <img id="background" src="background.jpg" alt="background" height="106%" width="104%" />
+    <div id="header">
+      <span style="font-size:2em;">WELCOME TO</span></br>
+      <span style="font-size:7em;"><b>GEAR MANAGER</b></span>
+    </div>
+    <div class="main">
+      <div class="authorize">
+        <button onclick="location.href = 'https://www.bungie.net/en/OAuth/Authorize?client_id=22868&response_type=code';" class="btn">Launch App</button>
+      </div>
+      <span id="beta">try the beta</span>
+      <div class="description">
+      <span><h2>Access your items everywhere!</h2></span>
+      <p><i>Swap items, check stats and become legend with Gear Manager</i></p>
+      </div>
+    </div>
   </body>
 </html>
