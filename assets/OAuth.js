@@ -123,7 +123,7 @@ $(document).ready(function() {
 
         for (let insideLoop = 0; insideLoop < Object.keys(raceData.DestinyRaceDefinition).length; insideLoop++) {
           if (object[Object.keys(object)[0]].characters.data[firstCharacterString].raceHash === raceData.DestinyRaceDefinition[insideLoop].json.hash) {
-            charRace = object.DestinyRaceDefinition[insideLoop].json.displayProperties.name
+            charRace = raceData.DestinyRaceDefinition[insideLoop].json.displayProperties.name
 
           }
         }
