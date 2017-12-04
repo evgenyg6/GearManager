@@ -1,8 +1,8 @@
 //var DestinyClassDefinition = require('./manifest/DestinyClassDefinition.json')
-
+console.log("first", classData)
 $(document).ready(function() {
 
-
+    console.log("second", classData)
     var apiKey = "9a29535463e94dd284e033d5618eb1d5";
 
     if (window.location.href.indexOf("code") > -1) {
@@ -118,13 +118,13 @@ $(document).ready(function() {
                 var secondEmblem = object[Object.keys(object)[0]].characters.data[secondCharacterString].emblemBackgroundPath
                 var thirdEmblem = object[Object.keys(object)[0]].characters.data[thirdCharacterString].emblemBackgroundPath
 
-                var imageUrl = "https://www.bungie.net" + firstEmblem
+                /*var imageUrl = "https://www.bungie.net" + firstEmblem
                 var characterClass = classData.DestinyClassDefinition[2].json.displayProperties.name
                 var characterRace = raceData.DestinyRaceDefinition[1].json.displayProperties.genderedRaceNames.Male
 
                 $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl + ')').appendTo('#container');
                 $('<span>'+ characterClass + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
-                $('<span>'+ characterRace + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
+                $('<span>'+ characterRace + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');*/
             },
             error: function(err) {
                 console.log(err);
