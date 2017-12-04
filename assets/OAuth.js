@@ -152,14 +152,21 @@ $(document).ready(function() {
       if (object[Object.keys(object)[0]].characters.data[firstCharacterString].classHash === classData.DestinyClassDefinition[insideLoop].json.hash) {
         let charClass1 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
       }
+    }
+
+    for (let insideLoop = 0; insideLoop < Object.keys(classData.DestinyClassDefinition).length; insideLoop++) {
       if (object[Object.keys(object)[0]].characters.data[secondCharacterString].classHash === classData.DestinyClassDefinition[insideLoop].json.hash) {
         let charClass2 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
       }
+    }
+
+    for (let insideLoop = 0; insideLoop < Object.keys(classData.DestinyClassDefinition).length; insideLoop++) {
       if (object[Object.keys(object)[0]].characters.data[thirdCharacterString].classHash === classData.DestinyClassDefinition[insideLoop].json.hash) {
         let charClass3 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
       }
     }
 
+    console.log(charRace1)
     $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl1 + ')').appendTo('#container');
     $('<span>' + charClass1 + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
     $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
