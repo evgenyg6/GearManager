@@ -97,6 +97,9 @@ $(document).ready(function() {
     }
 
     function getCharacters(headers, firstCharacter, secondCharacter, thirdCharacter) {
+        console.log(firstCharacter);
+        console.log(secondCharacter);
+        console.log(thirdCharacter);
         $.ajax({
             type: 'GET',
             headers: headers,
@@ -108,6 +111,10 @@ $(document).ready(function() {
                 var thirdEmblem = object[Object.keys(object)[0]].characters.data.thirdCharacter.emblemBackgroundPath
 
                 console.log(firstEmblem);
+
+                var imageUrl = "https://www.bungie.net" + firstEmblem
+
+                $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl + ')').appendTo('#container')
             },
             error: function(err) {
                 console.log(err);
