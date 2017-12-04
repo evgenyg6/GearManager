@@ -30,7 +30,7 @@ $(document).ready(function() {
                 };
                 console.log(headers);
                 getCurrentUser(headers);
-                getCurrency(headers);
+
             },
             error: function(err) {
                 console.log(err);
@@ -71,8 +71,9 @@ $(document).ready(function() {
                 var thirdCharacter = object[Object.keys(object)[0]].profile.data.characterIds[2]
 
                 var currencyURL = 'https://www.bungie.net/Platform/Destiny2/' + type + '/Profile/' + id + '/?components=103'
-                var characterURL = 'https://www.bungie.net/Platform/Destiny2/'+ type + '/Profile/' + id + '/?components=200'
+                var characterURL = 'https://www.bungie.net/Platform/Destiny2/' + type + '/Profile/' + id + '/?components=200'
                 getCharacters(headers, firstCharacter,  secondCharacter, thirdCharacter, type, id);
+                getCurrency(headers, currencyURL)
             },
             error: function(err) {
                 console.log(err);
@@ -80,7 +81,7 @@ $(document).ready(function() {
         })
     }
 
-    function getCurrency(headers) {
+    function getCurrency(headers, currencyURL) {
         $.ajax({
             type: 'GET',
             headers: headers,
@@ -118,7 +119,7 @@ $(document).ready(function() {
                 var thirdEmblem = object[Object.keys(object)[0]].characters.data[thirdCharacterString].emblemBackgroundPath
 
                 var imageUrl = "https://www.bungie.net" + firstEmblem
-                var destinyClass = DestinyClassDefinition.
+
 
                 $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl + ')').appendTo('#container');
                 $('<span>'+ glimmer + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
