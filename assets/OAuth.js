@@ -1,12 +1,3 @@
-let charClass1;
-for (let insideLoop = 0; insideLoop < Object.keys(classData.DestinyClassDefinition).length; insideLoop++) {
-  if (671679327 === classData.DestinyClassDefinition[insideLoop].json.hash) {
-    charClass1 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
-  }
-}
-
-console.log(charClass1)
-
 $(document).ready(function() {
 
   var apiKey = "9a29535463e94dd284e033d5618eb1d5";
@@ -42,6 +33,13 @@ $(document).ready(function() {
         console.log(err);
       }
     })
+  }
+
+
+  for (let insideLoop = 0; insideLoop < Object.keys(raceData.DestinyRaceDefinition).length; insideLoop++) {
+    if (object[Object.keys(object)[0]].characters.data[firstCharacterString].raceHash === raceData.DestinyRaceDefinition[insideLoop].json.hash) {
+      let charRace1 = raceData.DestinyRaceDefinition[insideLoop].json.genderedRaceNames.Male
+    }
   }
 
   function getCurrentUser(headers) {
@@ -144,40 +142,33 @@ $(document).ready(function() {
 
     for (let insideLoop = 0; insideLoop < Object.keys(raceData.DestinyRaceDefinition).length; insideLoop++) {
       if (object[Object.keys(object)[0]].characters.data[firstCharacterString].raceHash === raceData.DestinyRaceDefinition[insideLoop].json.hash) {
-        let charRace1 = raceData.DestinyRaceDefinition[insideLoop].json.genderedRaceNames.Male
+        charRace1 = raceData.DestinyRaceDefinition[insideLoop].json.genderedRaceNames.Male
       }
     }
 
     for (let insideLoop = 0; insideLoop < Object.keys(classData.DestinyClassDefinition).length; insideLoop++) {
       if (object[Object.keys(object)[0]].characters.data[firstCharacterString].classHash === classData.DestinyClassDefinition[insideLoop].json.hash) {
-        let charClass1 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
+        charClass1 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
       }
-    }
-
-    for (let insideLoop = 0; insideLoop < Object.keys(classData.DestinyClassDefinition).length; insideLoop++) {
       if (object[Object.keys(object)[0]].characters.data[secondCharacterString].classHash === classData.DestinyClassDefinition[insideLoop].json.hash) {
-        let charClass2 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
+        charClass2 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
       }
-    }
-
-    for (let insideLoop = 0; insideLoop < Object.keys(classData.DestinyClassDefinition).length; insideLoop++) {
       if (object[Object.keys(object)[0]].characters.data[thirdCharacterString].classHash === classData.DestinyClassDefinition[insideLoop].json.hash) {
-        let charClass3 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
+        charClass3 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
       }
     }
 
-    console.log(charRace1)
     $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl1 + ')').appendTo('#container');
     $('<span>' + charClass1 + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
     $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
 
     $('<div/>').addClass('secondCharacter').css('background-image', 'url(' + imageUrl2 + ')').appendTo('#container');
-    $('<span>' + charClass2 + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
-    $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
+    $('<span>' + charClass2 + '</span>').addClass('classDefinition').appendTo('.secondCharacter');
+    $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.secondCharacter');
 
     $('<div/>').addClass('thirdCharacter').css('background-image', 'url(' + imageUrl3 + ')').appendTo('#container');
-    $('<span>' + charClass3 + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
-    $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
+    $('<span>' + charClass3 + '</span>').addClass('classDefinition').appendTo('.thirdCharacter');
+    $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.thirdCharacter');
 
   }
 
