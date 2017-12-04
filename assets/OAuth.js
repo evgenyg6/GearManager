@@ -1,4 +1,8 @@
+var DestinyClassDefinition = require('./manifest/DestinyClassDefinition.json')
+
 $(document).ready(function() {
+
+
     var apiKey = "9a29535463e94dd284e033d5618eb1d5";
 
     if (window.location.href.indexOf("code") > -1) {
@@ -47,7 +51,7 @@ $(document).ready(function() {
                 var getProfileURL = "https://www.bungie.net/Platform/Destiny2/" + membershipType + "/Profile/" + membershipId + "/?components=100"
 
                 $('<span>'+ displayName + '</span>').addClass('displayName').appendTo('#container')
-                getProfile(headers, getProfileURL);
+                getProfile(headers, getProfileURL, membershipType, membershipId);
             },
             error: function(err) {
                 console.log(err);
@@ -55,7 +59,7 @@ $(document).ready(function() {
         })
     }
 
-    function getProfile(headers, getProfileURL) {
+    function getProfile(headers, getProfileURL, type, id) {
         $.ajax({
             type: 'GET',
             headers: headers,
@@ -66,7 +70,9 @@ $(document).ready(function() {
                 var secondCharacter = object[Object.keys(object)[0]].profile.data.characterIds[1]
                 var thirdCharacter = object[Object.keys(object)[0]].profile.data.characterIds[2]
 
-                getCharacters(headers, firstCharacter,  secondCharacter, thirdCharacter);
+                var currencyURL = 'https://www.bungie.net/Platform/Destiny2/' + type + '/Profile/' + id + '/?components=103'
+                var characterURL = 'https://www.bungie.net/Platform/Destiny2/'+ type + '/Profile/' + id + '/?components=200'
+                getCharacters(headers, firstCharacter,  secondCharacter, thirdCharacter, type, id);
             },
             error: function(err) {
                 console.log(err);
@@ -78,7 +84,7 @@ $(document).ready(function() {
         $.ajax({
             type: 'GET',
             headers: headers,
-            url: 'https://www.bungie.net/Platform/Destiny2/4/Profile/4611686018467569204/?components=103',
+            url: currencyURL,
             success: function(object) {
                 console.log(object);
                 var glimmer = object[Object.keys(object)[0]].profileCurrencies.data.items[0].quantity
@@ -96,7 +102,7 @@ $(document).ready(function() {
         })
     }
 
-    function getCharacters(headers, firstCharacter, secondCharacter, thirdCharacter) {
+    function getCharacters(headers, firstCharacter, secondCharacter, thirdCharacter, characterURL) {
         var firstCharacterString = firstCharacter.toString();
         var secondCharacterString = secondCharacter.toString();
         var thirdCharacterString = thirdCharacter.toString();
@@ -104,23 +110,24 @@ $(document).ready(function() {
         $.ajax({
             type: 'GET',
             headers: headers,
-            url: 'https://www.bungie.net/Platform/Destiny2/4/Profile/4611686018467569204/?components=200' ,
+            url: characterURL,
             success: function(object) {
                 console.log(object);
-                var firstEmblem = object[Object.keys(object)[0]].characters.data['2305843009299232574'].emblemBackgroundPath
-
-                console.log(firstEmblem);
+                var firstEmblem = object[Object.keys(object)[0]].characters.data[firstCharacterString].emblemBackgroundPath
+                var secondEmblem = object[Object.keys(object)[0]].characters.data[secondCharacterString].emblemBackgroundPath
+                var thirdEmblem = object[Object.keys(object)[0]].characters.data[thirdCharacterString].emblemBackgroundPath
 
                 var imageUrl = "https://www.bungie.net" + firstEmblem
+                var destinyClass = DestinyClassDefinition.
 
-                $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl + ')').appendTo('#container')
+                $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl + ')').appendTo('#container');
+                $('<span>'+ glimmer + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
             },
             error: function(err) {
                 console.log(err);
             }
         })
     }
-
 
 
 
