@@ -72,7 +72,7 @@ $(document).ready(function() {
 
                 var currencyURL = 'https://www.bungie.net/Platform/Destiny2/' + type + '/Profile/' + id + '/?components=103'
                 var characterURL = 'https://www.bungie.net/Platform/Destiny2/' + type + '/Profile/' + id + '/?components=200'
-                getCharacters(headers, firstCharacter,  secondCharacter, thirdCharacter, type, id);
+                getCharacters(headers, firstCharacter,  secondCharacter, thirdCharacter, characterURL);
                 getCurrency(headers, currencyURL)
             },
             error: function(err) {
