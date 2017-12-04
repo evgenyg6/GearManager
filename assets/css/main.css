@@ -72,11 +72,28 @@ body {
 .firstCharacter {
   position: absolute;
   background-color: black;
-  top:50%;
+  top:14%;
   left:4%;
   width:20%;
   height:5em;
+}
 
+.secondCharacter {
+  position: absolute;
+  background-color: black;
+  top:24%;
+  left:4%;
+  width:20%;
+  height:5em;
+}
+
+.thirdCharacter {
+  position: absolute;
+  background-color: black;
+  top:34%;
+  left:4%;
+  width:20%;
+  height:5em;
 }
 
 .classDefinition {
@@ -84,16 +101,16 @@ body {
   top:10%;
   left:18%;
   color:white;
-  font-size:1.5em;
+  font-size:1.4em;
 }
 
 .raceDefinition {
   position: absolute;
   color:white;
-  top:50%;
+  top:52%;
   left:18%;
-  font-size:1em;
-  opacity:0.2;
+  font-size:1.05em;
+  opacity:0.5;
 }
 
 .character1:hover, .character2:hover, .character3:hover {
