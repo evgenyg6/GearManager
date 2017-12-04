@@ -120,7 +120,7 @@ $(document).ready(function() {
 
                 var imageUrl = "https://www.bungie.net" + firstEmblem
                 var characterClass = classData.DestinyClassDefinition[2].json.displayProperties.name
-                var characterRace = raceData.DestinyRaceDefinition[1].json.displayProperties.genderedRaceNames.Male
+                var characterRace = raceData.DestinyRaceDefinition[1].json.genderedRaceNames.Male
 
                 $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl + ')').appendTo('#container');
                 $('<span>'+ characterClass + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
