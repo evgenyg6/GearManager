@@ -1,4 +1,4 @@
-var DestinyClassDefinition = require('./manifest/DestinyClassDefinition.json')
+//var DestinyClassDefinition = require('./manifest/DestinyClassDefinition.json')
 
 $(document).ready(function() {
 
