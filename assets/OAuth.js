@@ -97,18 +97,19 @@ $(document).ready(function() {
     }
 
     function getCharacters(headers, firstCharacter, secondCharacter, thirdCharacter) {
-        console.log(firstCharacter);
-        console.log(secondCharacter);
-        console.log(thirdCharacter);
+        var firstCharacterString = firstCharacter.toString();
+        var secondCharacterString = secondCharacter.toString();
+        var thirdCharacterString = thirdCharacter.toString();
+
         $.ajax({
             type: 'GET',
             headers: headers,
             url: 'https://www.bungie.net/Platform/Destiny2/4/Profile/4611686018467569204/?components=200' ,
             success: function(object) {
                 console.log(object);
-                var firstEmblem = object[Object.keys(object)[0]].characters.data.firstCharacter.emblemBackgroundPath
-                var secondEmblem = object[Object.keys(object)[0]].characters.data.secondCharacter.emblemBackgroundPath
-                var thirdEmblem = object[Object.keys(object)[0]].characters.data.thirdCharacter.emblemBackgroundPath
+                var firstEmblem = object[Object.keys(object)[0]].characters.data.firstCharacterString.emblemBackgroundPath
+                var secondEmblem = object[Object.keys(object)[0]].characters.data.secondCharacterString.emblemBackgroundPath
+                var thirdEmblem = object[Object.keys(object)[0]].characters.data.thirdCharacterString.emblemBackgroundPath
 
                 console.log(firstEmblem);
 
