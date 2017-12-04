@@ -71,7 +71,6 @@ body {
 
 .firstCharacter {
   position: absolute;
-  background-color: black;
   top:14%;
   left:4%;
   width:20%;
@@ -80,7 +79,6 @@ body {
 
 .secondCharacter {
   position: absolute;
-  background-color: black;
   top:24%;
   left:4%;
   width:20%;
@@ -89,7 +87,6 @@ body {
 
 .thirdCharacter {
   position: absolute;
-  background-color: black;
   top:34%;
   left:4%;
   width:20%;
