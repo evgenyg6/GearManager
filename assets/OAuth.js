@@ -110,34 +110,54 @@ $(document).ready(function() {
       headers: headers,
       url: characterURL,
       success: function(object) {
-        console.log(object);
-        var firstEmblem = object[Object.keys(object)[0]].characters.data[firstCharacterString].emblemBackgroundPath
-        var secondEmblem = object[Object.keys(object)[0]].characters.data[secondCharacterString].emblemBackgroundPath
-        var thirdEmblem = object[Object.keys(object)[0]].characters.data[thirdCharacterString].emblemBackgroundPath
-
-        var imageUrl = "https://www.bungie.net" + firstEmblem
-        var characterClass = classData.DestinyClassDefinition[2].json.displayProperties.name
-        var characterRace = raceData.DestinyRaceDefinition[1].json.genderedRaceNames.Male
-
-        let charRace;
-
-        for (let insideLoop = 0; insideLoop < Object.keys(raceData.DestinyRaceDefinition).length; insideLoop++) {
-          if (object[Object.keys(object)[0]].characters.data[firstCharacterString].raceHash === raceData.DestinyRaceDefinition[insideLoop].json.hash) {
-            charRace = raceData.DestinyRaceDefinition[insideLoop].json.displayProperties.name
-
-          }
-        }
-
-        console.log(charRace);
-
-        $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl + ')').appendTo('#container');
-        $('<span>' + characterClass + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
-        $('<span>' + characterRace + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
+        characterEmblem(object, firstCharacterString, secondCharacterString, thirdCharacterString)
       },
       error: function(err) {
         console.log(err);
       }
     })
+  }
+
+  function characterEmblem(object, firstCharacterString, secondCharacterString, thirdCharacterString) {
+    var firstEmblem = object[Object.keys(object)[0]].characters.data[firstCharacterString].emblemBackgroundPath
+    var secondEmblem = object[Object.keys(object)[0]].characters.data[secondCharacterString].emblemBackgroundPath
+    var thirdEmblem = object[Object.keys(object)[0]].characters.data[thirdCharacterString].emblemBackgroundPath
+
+    var imageUrl1 = "https://www.bungie.net" + firstEmblem
+    var imageUrl2 = "https://www.bungie.net" + secondEmblem
+    var imageUrl3 = "https://www.bungie.net" + thirdEmblem
+      /*var characterClass = classData.DestinyClassDefinition[2].json.displayProperties.name
+      var characterRace = raceData.DestinyRaceDefinition[1].json.genderedRaceNames.Male*/
+
+    for (let insideLoop = 0; insideLoop < Object.keys(raceData.DestinyRaceDefinition).length; insideLoop++) {
+      if (object[Object.keys(object)[0]].characters.data[firstCharacterString].raceHash === raceData.DestinyRaceDefinition[insideLoop].json.hash) {
+        let charRace1 = raceData.DestinyRaceDefinition[insideLoop].json.genderedRaceNames.Male
+      }
+    }
+
+    for (let insideLoop = 0; insideLoop < Object.keys(classData.DestinyRaceDefinition).length; insideLoop++) {
+      if (object[Object.keys(object)[0]].characters.data[firstCharacterString].classHash === classData.DestinyRaceDefinition[insideLoop].json.hash) {
+        let charClass1 = classData.DestinyRaceDefinition[insideLoop].json.displayProperties.name
+      }
+    }
+
+    console.log(charClass1)
+
+    $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl1 + ')').appendTo('#container');
+    $('<span>' + characterClass + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
+    $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
+
+    $('<div/>').addClass('secondCharacter').css('background-image', 'url(' + imageUrl2 + ')').appendTo('#container');
+    $('<span>' + characterClass + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
+    $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
+
+    $('<div/>').addClass('thirdCharacter').css('background-image', 'url(' + imageUrl3 + ')').appendTo('#container');
+    $('<span>' + characterClass + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
+    $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
+
+
+
+
   }
 
 
