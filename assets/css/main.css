@@ -69,6 +69,16 @@ body {
   color:#727272;
 }
 
+.firstCharacter {
+  position: absolute;
+  background-color: white;
+  top:50%;
+  left:4%;
+  width:20%;
+  height:5em;
+
+}
+
 .character1:hover, .character2:hover, .character3:hover {
   border: 1px solid #727272;
 }
