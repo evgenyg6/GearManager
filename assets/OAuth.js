@@ -62,6 +62,11 @@ $(document).ready(function() {
             url: getProfileURL,
             success: function(object) {
                 console.log(object);
+                var firstCharacter = object[Object.keys(object)[0]].profile.data.characterIds[0]
+                var secondCharacter = object[Object.keys(object)[0]].profile.data.characterIds[1]
+                var thirdCharacter = object[Object.keys(object)[0]].profile.data.characterIds[2]
+
+                getCharacters(headers, firstCharacter,  secondCharacter, thirdCharacter);
             },
             error: function(err) {
                 console.log(err);
@@ -84,6 +89,25 @@ $(document).ready(function() {
                 $('<span>'+ shard + '</span>').addClass('shard').appendTo('.nav');
                 $('<span>'+ brightdust + '</span>').addClass('brightdust').appendTo('.nav');
 
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    }
+
+    function getCharacters(headers, firstCharacter, secondCharacter, thirdCharacter) {
+        $.ajax({
+            type: 'GET',
+            headers: headers,
+            url: 'https://www.bungie.net/Platform/Destiny2/4/Profile/4611686018467569204/?components=200' ,
+            success: function(object) {
+                console.log(object);
+                var firstEmblem = object[Object.keys(object)[0]].characters.data.firstCharacter.emblemBackgroundPath
+                var secondEmblem = object[Object.keys(object)[0]].characters.data.secondCharacter.emblemBackgroundPath
+                var thirdEmblem = object[Object.keys(object)[0]].characters.data.thirdCharacter.emblemBackgroundPath
+
+                console.log(firstEmblem);
             },
             error: function(err) {
                 console.log(err);
