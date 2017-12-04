@@ -135,9 +135,9 @@ $(document).ready(function() {
       }
     }
 
-    for (let insideLoop = 0; insideLoop < Object.keys(classData.DestinyRaceDefinition).length; insideLoop++) {
-      if (object[Object.keys(object)[0]].characters.data[firstCharacterString].classHash === classData.DestinyRaceDefinition[insideLoop].json.hash) {
-        let charClass1 = classData.DestinyRaceDefinition[insideLoop].json.displayProperties.name
+    for (let insideLoop = 0; insideLoop < Object.keys(classData.DestinyClassDefinition).length; insideLoop++) {
+      if (object[Object.keys(object)[0]].characters.data[firstCharacterString].classHash === classData.DestinyClassDefinition[insideLoop].json.hash) {
+        let charClass1 = classData.DestinyClassDefinition[insideLoop].json.displayProperties.name
       }
     }
 
