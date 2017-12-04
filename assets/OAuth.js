@@ -119,10 +119,12 @@ $(document).ready(function() {
                 var thirdEmblem = object[Object.keys(object)[0]].characters.data[thirdCharacterString].emblemBackgroundPath
 
                 var imageUrl = "https://www.bungie.net" + firstEmblem
-
+                var characterClass = classData.DestinyClassDefinition[2].json.displayProperties.name
+                var characterRace = raceData.DestinyRaceDefinition[1].json.displayProperties.genderedRaceNames.Male
 
                 $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl + ')').appendTo('#container');
-                $('<span>'+ glimmer + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
+                $('<span>'+ characterClass + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
+                $('<span>'+ characterRace + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
             },
             error: function(err) {
                 console.log(err);
