@@ -75,6 +75,7 @@ $(document).ready(function() {
         getCharacters(headers, firstCharacter, secondCharacter, thirdCharacter, characterURL);
         getCurrency(headers, currencyURL);
         getCharacterEquip(headers, characterEquip, firstCharacter);
+        getCharacterInv(headers, characterInv, firstCharacter);
       },
       error: function(err) {
         console.log(err);
@@ -185,8 +186,10 @@ $(document).ready(function() {
     var firstCharacterString = firstCharacter.toString();
 
     let equipName;
+    let equipTier;
     let equipDesc;
     let eachItem;
+    let allTiers = [];
     let equipStats = [];
     let eachEquipStats = [];
     let allNames = [];
@@ -199,17 +202,19 @@ $(document).ready(function() {
       success: function(object) {
         //console.log(object);
 
-        var getCharacterEquip = object[Object.keys(object)[0]].characterEquipment.data[firstCharacterString].items
-        console.log(getCharacterEquip);
+        var currentCharEquip = object[Object.keys(object)[0]].characterEquipment.data[firstCharacterString].items
+        console.log(currentCharEquip);
 
         // outside loop for user object
-        for (let outsideLoop = 0; outsideLoop < getCharacterEquip.length; outsideLoop++) {
+        for (let outsideLoop = 0; outsideLoop < currentCharEquip.length; outsideLoop++) {
           // inside loop for manifest
           for (let insideLoop = 0; insideLoop < Object.keys(itemData.DestinyInventoryItemDefinition).length; insideLoop++) {
-            if (getCharacterEquip[outsideLoop].itemHash === itemData.DestinyInventoryItemDefinition[insideLoop].json.hash) {
+            if (currentCharEquip[outsideLoop].itemHash === itemData.DestinyInventoryItemDefinition[insideLoop].json.hash) {
               equipName = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.name;
               allNames.push(equipName);
-              equipDesc = itemData.DestinyInventoryItemDefinition[insideLoop].json.itemTypeAndTierDisplayName;
+              equipTier = itemData.DestinyInventoryItemDefinition[insideLoop].json.itemTypeAndTierDisplayName;
+              allTiers.push(equipTier);
+              equipDesc = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.description
               allDesc.push(equipDesc);
               eachItem = itemData.DestinyInventoryItemDefinition[insideLoop].json.stats.stats
               eachEquipStats = []; //clear array of previous values
@@ -222,9 +227,8 @@ $(document).ready(function() {
             }
 
           }
-          //console.log(equipName + '', equipDesc + "", eachItem + "**", equipStats);
         }
-        console.log(allNames, allDesc, equipStats);
+        console.log(allNames, allTiers, allDesc, equipStats);
 
       },
       error: function(err) {
@@ -232,5 +236,29 @@ $(document).ready(function() {
       }
     })
   }
+
+  function getCharacterInv(headers, characterInv, firstCharacter) {
+    var firstCharacterString = firstCharacter.toString();
+    let charEntireInv = [];
+    $.ajax({
+      type: 'GET',
+      headers: headers,
+      url: characterInv,
+      success: function(object) {
+        console.log(object);
+        var firstCharacterInv = object[Object.keys(object)[0]].characterInventories.data[firstCharacterString].items
+        for (items in firstCharacterInv) {
+
+          charEntireInv.push(firstCharacterInv[items]);
+        }
+        console.log(charEntireInv);
+
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
+  }
+
 
 });
