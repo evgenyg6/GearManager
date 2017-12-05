@@ -110,6 +110,7 @@ $(document).ready(function() {
       headers: headers,
       url: characterURL,
       success: function(object) {
+        console.log(object)
         characterEmblem(object, firstCharacterString, secondCharacterString, thirdCharacterString)
       },
       error: function(err) {
@@ -154,6 +155,7 @@ $(document).ready(function() {
     $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl1 + ')').appendTo('#container');
     $('<span>' + charClass1 + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
     $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
+    $('<span>' + level + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
 
     $('<div/>').addClass('secondCharacter').css('background-image', 'url(' + imageUrl2 + ')').appendTo('#container');
     $('<span>' + charClass2 + '</span>').addClass('classDefinition').appendTo('.secondCharacter');
