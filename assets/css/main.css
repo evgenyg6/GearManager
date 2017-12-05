@@ -71,6 +71,7 @@ body {
 
 .firstCharacter {
   position: absolute;
+  background-image:url("https://www.bungie.net/common/destiny2_content/icons/d3c2e878297ea7e1152e2895ae20cf2c.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
   top:14%;
@@ -124,6 +125,16 @@ left:80%;
 color:white;
 font-size: 1.2em;
 opacity:0.8;
+}
+
+.light {
+  position: absolute;
+  font-family: 'HelvLight';
+  font-weight: bold;
+  top:0%;
+  left:80%;
+  color:#28ccc3;
+  font-size: 2.3em;
 }
 
 .character1:hover, .character2:hover, .character3:hover {
