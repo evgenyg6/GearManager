@@ -169,17 +169,19 @@ $(document).ready(function() {
     $('<span>' + charClass1 + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
     $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
     $('<span>' + characterLevel1 + '</span>').addClass('level').appendTo('.firstCharacter');
+    $('<span>' + powerLevel1 + '</span>').addClass('light').appendTo('.firstCharacter');
 
     $('<div/>').addClass('secondCharacter').css('background-image', 'url(' + imageUrl2 + ')').appendTo('#container');
     $('<span>' + charClass2 + '</span>').addClass('classDefinition').appendTo('.secondCharacter');
     $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.secondCharacter');
     $('<span>' + characterLevel2 + '</span>').addClass('level').appendTo('.secondCharacter');
+    $('<span>' + powerLevel2 + '</span>').addClass('light').appendTo('.secondCharacter');
 
     $('<div/>').addClass('thirdCharacter').css('background-image', 'url(' + imageUrl3 + ')').appendTo('#container');
     $('<span>' + charClass3 + '</span>').addClass('classDefinition').appendTo('.thirdCharacter');
     $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.thirdCharacter');
     $('<span>' + characterLevel3 + '</span>').addClass('level').appendTo('.thirdCharacter');
-
+    $('<span>' + powerLevel3 + '</span>').addClass('light').appendTo('.thirdCharacter');
   }
 
   function getCharacterEquip(headers, characterEquip, firstCharacter) {
