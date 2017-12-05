@@ -124,6 +124,10 @@ $(document).ready(function() {
     var secondEmblem = object[Object.keys(object)[0]].characters.data[secondCharacterString].emblemBackgroundPath
     var thirdEmblem = object[Object.keys(object)[0]].characters.data[thirdCharacterString].emblemBackgroundPath
 
+    var characterLevel1 = "level " + object[Object.keys(object)[0]].characters.data[firstCharacterString].baseCharacterLevel
+    var characterLevel2 = "level " + object[Object.keys(object)[0]].characters.data[secondCharacterString].baseCharacterLevel
+    var characterLevel3 = "level " + object[Object.keys(object)[0]].characters.data[thirdCharacterString].baseCharacterLevel
+
     var imageUrl1 = "https://www.bungie.net" + firstEmblem
     var imageUrl2 = "https://www.bungie.net" + secondEmblem
     var imageUrl3 = "https://www.bungie.net" + thirdEmblem
@@ -155,15 +159,17 @@ $(document).ready(function() {
     $('<div/>').addClass('firstCharacter').css('background-image', 'url(' + imageUrl1 + ')').appendTo('#container');
     $('<span>' + charClass1 + '</span>').addClass('classDefinition').appendTo('.firstCharacter');
     $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
-    $('<span>' + level + '</span>').addClass('raceDefinition').appendTo('.firstCharacter');
+    $('<span>' + characterLevel1 + '</span>').addClass('level').appendTo('.firstCharacter');
 
     $('<div/>').addClass('secondCharacter').css('background-image', 'url(' + imageUrl2 + ')').appendTo('#container');
     $('<span>' + charClass2 + '</span>').addClass('classDefinition').appendTo('.secondCharacter');
     $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.secondCharacter');
+    $('<span>' + characterLevel2 + '</span>').addClass('level').appendTo('.secondCharacter');
 
     $('<div/>').addClass('thirdCharacter').css('background-image', 'url(' + imageUrl3 + ')').appendTo('#container');
     $('<span>' + charClass3 + '</span>').addClass('classDefinition').appendTo('.thirdCharacter');
     $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.thirdCharacter');
+    $('<span>' + characterLevel3 + '</span>').addClass('level').appendTo('.thirdCharacter');
 
   }
 
