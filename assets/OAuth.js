@@ -35,13 +35,6 @@ $(document).ready(function() {
     })
   }
 
-
-  for (let insideLoop = 0; insideLoop < Object.keys(raceData.DestinyRaceDefinition).length; insideLoop++) {
-    if (object[Object.keys(object)[0]].characters.data[firstCharacterString].raceHash === raceData.DestinyRaceDefinition[insideLoop].json.hash) {
-      let charRace1 = raceData.DestinyRaceDefinition[insideLoop].json.genderedRaceNames.Male
-    }
-  }
-
   function getCurrentUser(headers) {
     $.ajax({
       type: 'GET',
