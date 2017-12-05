@@ -69,8 +69,12 @@ $(document).ready(function() {
 
         var currencyURL = 'https://www.bungie.net/Platform/Destiny2/' + type + '/Profile/' + id + '/?components=103'
         var characterURL = 'https://www.bungie.net/Platform/Destiny2/' + type + '/Profile/' + id + '/?components=200'
+        let characterInv = "https://www.bungie.net/Platform/Destiny2/" + type + "/Profile/" + id + "/?components=201"
+        let characterEquip = "https://www.bungie.net/Platform/Destiny2/" + type + "/Profile/" + id + "/?components=205"
+
         getCharacters(headers, firstCharacter, secondCharacter, thirdCharacter, characterURL);
-        getCurrency(headers, currencyURL)
+        getCurrency(headers, currencyURL);
+        getCharacterEquip(headers, characterEquip, firstCharacter);
       },
       error: function(err) {
         console.log(err);
@@ -131,8 +135,12 @@ $(document).ready(function() {
     var imageUrl1 = "https://www.bungie.net" + firstEmblem
     var imageUrl2 = "https://www.bungie.net" + secondEmblem
     var imageUrl3 = "https://www.bungie.net" + thirdEmblem
-      /*var characterClass = classData.DestinyClassDefinition[2].json.displayProperties.name
-      var characterRace = raceData.DestinyRaceDefinition[1].json.genderedRaceNames.Male*/
+
+    var powerLevel1 = object[Object.keys(object)[0]].characters.data[firstCharacterString].light
+    var powerLevel2 = object[Object.keys(object)[0]].characters.data[secondCharacterString].light
+    var powerLevel3 = object[Object.keys(object)[0]].characters.data[thirdCharacterString].light
+
+
     let charRace1;
     let charClassl;
     let charClass2;
@@ -171,6 +179,58 @@ $(document).ready(function() {
     $('<span>' + charRace1 + '</span>').addClass('raceDefinition').appendTo('.thirdCharacter');
     $('<span>' + characterLevel3 + '</span>').addClass('level').appendTo('.thirdCharacter');
 
+  }
+
+  function getCharacterEquip(headers, characterEquip, firstCharacter) {
+    var firstCharacterString = firstCharacter.toString();
+
+    let equipName;
+    let equipDesc;
+    let eachItem;
+    let equipStats = [];
+    let eachEquipStats = [];
+    let allNames = [];
+    let allDesc = [];
+
+    $.ajax({
+      type: 'GET',
+      headers: headers,
+      url: characterEquip,
+      success: function(object) {
+        //console.log(object);
+
+        var getCharacterEquip = object[Object.keys(object)[0]].characterEquipment.data[firstCharacterString].items
+        console.log(getCharacterEquip);
+
+        // outside loop for user object
+        for (let outsideLoop = 0; outsideLoop < getCharacterEquip.length; outsideLoop++) {
+          // inside loop for manifest
+          for (let insideLoop = 0; insideLoop < Object.keys(itemData.DestinyInventoryItemDefinition).length; insideLoop++) {
+            if (getCharacterEquip[outsideLoop].itemHash === itemData.DestinyInventoryItemDefinition[insideLoop].json.hash) {
+              equipName = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.name;
+              allNames.push(equipName);
+              equipDesc = itemData.DestinyInventoryItemDefinition[insideLoop].json.itemTypeAndTierDisplayName;
+              allDesc.push(equipDesc);
+              eachItem = itemData.DestinyInventoryItemDefinition[insideLoop].json.stats.stats
+              eachEquipStats = []; //clear array of previous values
+              // innerMostLoop for item stats
+              for (items in eachItem) {
+
+                eachEquipStats.push(eachItem[items].value);
+              }
+              equipStats.push(eachEquipStats)
+            }
+
+          }
+          //console.log(equipName + '', equipDesc + "", eachItem + "**", equipStats);
+        }
+        console.log(allNames, allDesc, equipStats);
+
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
   }
 
 });
