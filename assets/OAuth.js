@@ -76,7 +76,7 @@ $(document).ready(function() {
         getCurrency(headers, currencyURL);
         getCharacterEquip(headers, characterEquip, firstCharacter);
         getCharacterInv(headers, characterInv, firstCharacter);
-        getCharacterVault(headers, characterVault);
+        /*getCharacterVault(headers, characterVault);*/
       },
       error: function(err) {
         console.log(err);
@@ -311,6 +311,7 @@ $(document).ready(function() {
         // for displaying the items on page
         console.log(allInvNames, allInvTiers, allInvDesc, allInvStats, allInvIcons);
 
+        let space = 0;
         // Creates vault div and populates it with gear icons
         for (let numOfItems = 0; numOfItems < sortedCharInv.length; numOfItems++) {
           imageUrl = "https://www.bungie.net" + allInvIcons[numOfItems];
@@ -321,8 +322,12 @@ $(document).ready(function() {
           $('<img/>').attr({
             'src': imageUrl,
             'width': '10em',
-            'height': '10em'
+            'height': '10em',
+            'top': '5%',
+            'left': space + "%"
           }).addClass('vaultInvIcons').appendTo('.invGear');
+
+          space = space + 10
 
           $('<span>' + itemName + '</span>').addClass('itemName').appendTo('.invItemName');
           $('<span>' + itemTier + '</span>').addClass('itemTier').appendTo('.invItemTier');
@@ -484,6 +489,7 @@ $(document).ready(function() {
       }
     })
   }
+
   // TEMP HARDCODE: Equip MIDA Multi Tool
   function equipItemOrigin(headers, firstCharacter, type, characterInv, characterEquip) {
     let firstCharacterString = firstCharacter.toString();
