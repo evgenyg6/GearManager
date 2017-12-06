@@ -71,11 +71,12 @@ $(document).ready(function() {
         var characterURL = 'https://www.bungie.net/Platform/Destiny2/' + type + '/Profile/' + id + '/?components=200'
         let characterInv = "https://www.bungie.net/Platform/Destiny2/" + type + "/Profile/" + id + "/?components=201"
         let characterEquip = "https://www.bungie.net/Platform/Destiny2/" + type + "/Profile/" + id + "/?components=205"
-
+        let characterVault = 'https://www.bungie.net/Platform/Destiny2/' + type + '/Profile/' + id + '/?components=102'
         getCharacters(headers, firstCharacter, secondCharacter, thirdCharacter, characterURL);
         getCurrency(headers, currencyURL);
         getCharacterEquip(headers, characterEquip, firstCharacter);
         getCharacterInv(headers, characterInv, firstCharacter);
+        getCharacterVault(headers, characterVault);
       },
       error: function(err) {
         console.log(err);
@@ -184,6 +185,7 @@ $(document).ready(function() {
     $('<span>' + powerLevel3 + '</span>').addClass('light').appendTo('.thirdCharacter');
   }
 
+  // grabs items equipped on given character
   function getCharacterEquip(headers, characterEquip, firstCharacter) {
     var firstCharacterString = firstCharacter.toString();
 
@@ -191,11 +193,13 @@ $(document).ready(function() {
     let equipTier;
     let equipDesc;
     let eachItem;
-    let allTiers = [];
-    let equipStats = [];
+    let equipIcon;
+    let allEquipIcons = [];
+    let allEquipTiers = [];
+    let allEquipStats = [];
     let eachEquipStats = [];
-    let allNames = [];
-    let allDesc = [];
+    let allEquipNames = [];
+    let allEquipDesc = [];
 
     $.ajax({
       type: 'GET',
@@ -204,33 +208,248 @@ $(document).ready(function() {
       success: function(object) {
         //console.log(object);
 
-        var currentCharEquip = object[Object.keys(object)[0]].characterEquipment.data[firstCharacterString].items
-        console.log(currentCharEquip);
+        //TODO: CHANGE TO FOR LOOP BEFORE SORTING LIKE IN INV AND VAULT FUNCTIONS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+        var currentCharEquip = object[Object.keys(object)[0]].characterEquipment.data[firstCharacterString].items
+          // for grabbing items with equip function
+        console.log(currentCharEquip);
         // outside loop for user object
         for (let outsideLoop = 0; outsideLoop < currentCharEquip.length; outsideLoop++) {
+          // filters out emotes and stuff you can't show stats for
+          if (currentCharEquip[outsideLoop].itemInstanceId) {
+            // inside loop for manifest
+            for (let insideLoop = 0; insideLoop < Object.keys(itemData.DestinyInventoryItemDefinition).length; insideLoop++) {
+              if (currentCharEquip[outsideLoop].itemHash === itemData.DestinyInventoryItemDefinition[insideLoop].json.hash && itemData.DestinyInventoryItemDefinition[insideLoop].json.equippable === true) {
+                equipName = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.name;
+                allEquipNames.push(equipName);
+                equipTier = itemData.DestinyInventoryItemDefinition[insideLoop].json.itemTypeAndTierDisplayName;
+                allEquipTiers.push(equipTier);
+                equipDesc = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.description
+                allEquipDesc.push(equipDesc);
+                equipIcon = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.icon;
+                allEquipIcons.push(equipIcon);
+                eachItem = itemData.DestinyInventoryItemDefinition[insideLoop].json.stats.stats
+                eachEquipStats = []; //clear array of previous values
+                // innerMostLoop for item stats
+                for (items in eachItem) {
+
+                  eachEquipStats.push(eachItem[items].value);
+                }
+                allEquipStats.push(eachEquipStats)
+              }
+
+            }
+          }
+        }
+        // for displaying items on page
+        console.log(allEquipNames, allEquipTiers, allEquipDesc, allEquipStats, allEquipIcons);
+
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
+  }
+  // grabs inventory items on given character and builds them into divs
+  function getCharacterInv(headers, characterInv, firstCharacter) {
+    var firstCharacterString = firstCharacter.toString();
+    let equipName;
+    let equipTier;
+    let equipDesc;
+    let eachItem;
+    let equipIcon;
+    let sortedCharInv = [];
+    let allInvTiers = [];
+    let allInvStats = [];
+    let eachEquipStats = [];
+    let allInvIcons = [];
+    let allInvNames = [];
+    let allInvDesc = [];
+
+    $.ajax({
+      type: 'GET',
+      headers: headers,
+      url: characterInv,
+      success: function(object) {
+        //console.log(object);
+        var firstCharacterInv = object[Object.keys(object)[0]].characterInventories.data[firstCharacterString].items
+          //var secondCharacterInv = object[Object.keys(object)[0]].characterInventories.data[secondCharacterString].items
+          //var thirdCharacterInv = object[Object.keys(object)[0]].characterInventories.data[thirdCharacterString].items
+
+        for (items in firstCharacterInv) {
+          // filters out emotes and stuff you can't display stats for
+          if (firstCharacterInv[items].itemInstanceId) {
+            sortedCharInv.push(firstCharacterInv[items]);
+          }
+        }
+        // for grabbing items with equip function
+        console.log(sortedCharInv);
+        // outside loop for user object
+        for (let outsideLoop = 0; outsideLoop < sortedCharInv.length; outsideLoop++) {
           // inside loop for manifest
           for (let insideLoop = 0; insideLoop < Object.keys(itemData.DestinyInventoryItemDefinition).length; insideLoop++) {
-            if (currentCharEquip[outsideLoop].itemHash === itemData.DestinyInventoryItemDefinition[insideLoop].json.hash) {
+            if (sortedCharInv[outsideLoop].itemHash === itemData.DestinyInventoryItemDefinition[insideLoop].json.hash && itemData.DestinyInventoryItemDefinition[insideLoop].json.equippable === true) {
               equipName = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.name;
-              allNames.push(equipName);
+              allInvNames.push(equipName);
               equipTier = itemData.DestinyInventoryItemDefinition[insideLoop].json.itemTypeAndTierDisplayName;
-              allTiers.push(equipTier);
+              allInvTiers.push(equipTier);
               equipDesc = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.description
-              allDesc.push(equipDesc);
-              eachItem = itemData.DestinyInventoryItemDefinition[insideLoop].json.stats.stats
+              allInvDesc.push(equipDesc);
+              equipIcon = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.icon;
+              allInvIcons.push(equipIcon);
+              eachItem = itemData.DestinyInventoryItemDefinition[insideLoop].json.stats.stats;
               eachEquipStats = []; //clear array of previous values
               // innerMostLoop for item stats
               for (items in eachItem) {
 
                 eachEquipStats.push(eachItem[items].value);
               }
-              equipStats.push(eachEquipStats)
+              allInvStats.push(eachEquipStats)
             }
-
           }
         }
-        console.log(allNames, allTiers, allDesc, equipStats);
+        // for displaying the items on page
+        console.log(allInvNames, allInvTiers, allInvDesc, allInvStats, allInvIcons);
+
+        // Creates vault div and populates it with gear icons
+        for (let numOfItems = 0; numOfItems < sortedCharInv.length; numOfItems++) {
+          imageUrl = "https://www.bungie.net" + allInvIcons[numOfItems];
+          itemName = allInvNames[numOfItems];
+          itemTier = allInvTiers[numOfItems];
+          itemDesc = allInvDesc[numOfItems];
+
+          $('<img/>').attr({
+            'src': imageUrl,
+            'width': '10em',
+            'height': '10em'
+          }).addClass('vaultInvIcons').appendTo('.invGear');
+
+          $('<span>' + itemName + '</span>').addClass('itemName').appendTo('.invItemName');
+          $('<span>' + itemTier + '</span>').addClass('itemTier').appendTo('.invItemTier');
+          $('<span>' + itemDesc + '</span>').addClass('itemDesc').appendTo('.invItemDesc');
+
+
+        }
+
+        // Prints vault divs for content icons and name/tier
+        $('<div/>').addClass('invDiv').css({
+          'background-color': 'black',
+          'position': 'absolute',
+          'width': '50em',
+          'height': '50em'
+        }).appendTo('#container');
+
+        $('<div/>').addClass('invGear').css({
+          'background-color': 'grey',
+          'position': 'absolute'
+        }).appendTo('.invDiv');
+
+        $('<div/>').addClass('invItemName').css({
+          'background-color': 'grey',
+          'position': 'absolute'
+        }).appendTo('.invDiv');
+
+        $('<div/>').addClass('invItemTier').css({
+          'background-color': 'grey',
+          'position': 'absolute'
+        }).appendTo('.invDiv');
+
+        $('<div/>').addClass('invItemDesc').css({
+          'background-color': 'grey',
+          'position': 'absolute'
+        }).appendTo('.invDiv');
+
+
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
+  }
+  // grabs items in profile vault and builds them into divs
+  function getCharacterVault(headers, characterVault) {
+    let equipName;
+    let equipTier;
+    let equipIcon;
+    let sortedVault = [];
+    let allVaultNames = [];
+    let allVaultTiers = [];
+    let allVaultIcons = [];
+    $.ajax({
+      type: 'GET',
+      headers: headers,
+      url: characterVault,
+      success: function(object) {
+        //console.log(object);
+        let userVault = object[Object.keys(object)[0]].profileInventory.data.items;
+        for (items in userVault) {
+          // filters out emotes and stuff you can't display stats for
+          if (userVault[items].itemInstanceId) {
+            sortedVault.push(userVault[items]);
+          }
+        }
+        // for grabbing items with transfer function
+        console.log(sortedVault);
+        for (let outsideLoop = 0; outsideLoop < sortedVault.length; outsideLoop++) {
+          for (let insideLoop = 0; insideLoop < Object.keys(itemData.DestinyInventoryItemDefinition).length; insideLoop++) {
+            if (sortedVault[outsideLoop].itemHash === itemData.DestinyInventoryItemDefinition[insideLoop].json.hash) {
+              equipName = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.name;
+              allVaultNames.push(equipName);
+              equipTier = itemData.DestinyInventoryItemDefinition[insideLoop].json.itemTypeAndTierDisplayName;
+              allVaultTiers.push(equipTier);
+              equipIcon = itemData.DestinyInventoryItemDefinition[insideLoop].json.displayProperties.icon;
+              allVaultIcons.push(equipIcon);
+            }
+          }
+        }
+        // for displaying the items on page
+        console.log(allVaultNames, allVaultTiers, allVaultIcons);
+
+        let imgUrl;
+        let itemName;
+        let itemTier;
+        // Creates vault div and populates it with gear icons
+        for (let numOfItems = 0; numOfItems < sortedVault.length; numOfItems++) {
+          imageUrl = "https://www.bungie.net" + allVaultIcons[numOfItems];
+          itemName = allVaultNames[numOfItems];
+          itemTier = allVaultTiers[numOfItems];
+
+          $('<img/>').attr({
+            'src': imageUrl,
+            'width': '10em',
+            'height': '10em'
+          }).addClass('vaultGearIcons').appendTo('.vaultGear');
+
+          $('<span>' + itemName + '</span>').addClass('itemName').appendTo('.vaultItemName');
+          $('<span>' + itemTier + '</span>').addClass('itemTier').appendTo('.vaultItemTier');
+
+        }
+
+        // Prints vault divs for content icons and name/tier
+        $('<div/>').addClass('vaultDiv').css({
+          'background-color': 'black',
+          'position': 'absolute',
+          'width': '50em',
+          'height': '50em'
+        }).appendTo('#container');
+
+        $('<div/>').addClass('vaultGear').css({
+          'background-color': 'grey',
+          'position': 'absolute'
+        }).appendTo('.vaultDiv');
+
+        $('<div/>').addClass('vaultItemName').css({
+          'background-color': 'grey',
+          'position': 'absolute'
+        }).appendTo('.vaultDiv');
+
+        $('<div/>').addClass('vaultItemTier').css({
+          'background-color': 'grey',
+          'position': 'absolute'
+        }).appendTo('.vaultDiv');
+
+
+
 
       },
       error: function(err) {
@@ -239,21 +458,162 @@ $(document).ready(function() {
     })
   }
 
-  function getCharacterInv(headers, characterInv, firstCharacter) {
-    var firstCharacterString = firstCharacter.toString();
-    let charEntireInv = [];
+
+
+  function equipItemMida(headers, firstCharacter, type, characterInv, characterEquip) {
+    let firstCharacterString = firstCharacter.toString();
+    //selectedEquipItem;
+    let equipItemToChar = {
+      "itemId": '6917529043083550317',
+      "characterId": firstCharacterString,
+      "membershipType": type
+    }
+
     $.ajax({
-      type: 'GET',
+      type: 'POST',
       headers: headers,
-      url: characterInv,
+      contentType: "json",
+      data: JSON.stringify(equipItemToChar),
+      url: "https://www.bungie.net/Platform/Destiny2/Actions/Items/EquipItem/",
       success: function(object) {
         console.log(object);
-        var firstCharacterInv = object[Object.keys(object)[0]].characterInventories.data[firstCharacterString].items
-        for (items in firstCharacterInv) {
 
-          charEntireInv.push(firstCharacterInv[items]);
-        }
-        console.log(charEntireInv);
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
+  }
+  // TEMP HARDCODE: Equip MIDA Multi Tool
+  function equipItemOrigin(headers, firstCharacter, type, characterInv, characterEquip) {
+    let firstCharacterString = firstCharacter.toString();
+    //selectedEquipItem;
+    let equipItemToChar = {
+      "itemId": '6917529042933998211',
+      "characterId": firstCharacterString,
+      "membershipType": type
+    }
+
+    $.ajax({
+      type: 'POST',
+      headers: headers,
+      contentType: "json",
+      data: JSON.stringify(equipItemToChar),
+      url: "https://www.bungie.net/Platform/Destiny2/Actions/Items/EquipItem/",
+      success: function(object) {
+        console.log(object);
+
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
+  }
+  // TEMP HARDCODE: Transfer MIDA To Vault
+  function transferItemMidaToVault(headers, firstCharacter, type, sortedVault, characterInv) {
+    var firstCharacterString = firstCharacter.toString();
+    //selectedTransferItem;
+    let transferItem = {
+      "itemReferenceHash": '1331482397',
+      "stackSize": 1,
+      "transferToVault": true,
+      "itemId": '6917529043083550317',
+      "characterId": firstCharacterString,
+      "membershipType": type
+    }
+    $.ajax({
+      type: 'POST',
+      headers: headers,
+      contentType: "json",
+      data: JSON.stringify(transferItem),
+      url: "https://www.bungie.net/Platform/Destiny2/Actions/Items/TransferItem/",
+      success: function(object) {
+        console.log(object);
+
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
+  }
+
+  // TEMP HARDCODE: Transfer MIDA From Vault
+  function transferItemMidaFromVault(headers, firstCharacter, type, sortedVault, characterInv) {
+    var firstCharacterString = firstCharacter.toString();
+    //selectedTransferItem;
+    let transferItem = {
+      "itemReferenceHash": '1331482397',
+      "stackSize": 1,
+      "transferToVault": false,
+      "itemId": '6917529043083550317',
+      "characterId": firstCharacterString,
+      "membershipType": type
+    }
+    $.ajax({
+      type: 'POST',
+      headers: headers,
+      contentType: "json",
+      data: JSON.stringify(transferItem),
+      url: "https://www.bungie.net/Platform/Destiny2/Actions/Items/TransferItem/",
+      success: function(object) {
+        console.log(object);
+
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
+  }
+
+  // TEMP HARDCODE: Transfer Origin Story To Vault
+  function transferItemOriginToVault(headers, firstCharacter, type, sortedVault, characterInv) {
+    var firstCharacterString = firstCharacter.toString();
+    //selectedTransferItem;
+    let transferItem = {
+      "itemReferenceHash": '1644162710',
+      "stackSize": 1,
+      "transferToVault": true,
+      "itemId": '6917529042933998211',
+      "characterId": firstCharacterString,
+      "membershipType": type
+    }
+    $.ajax({
+      type: 'POST',
+      headers: headers,
+      contentType: "json",
+      data: JSON.stringify(transferItem),
+      url: "https://www.bungie.net/Platform/Destiny2/Actions/Items/TransferItem/",
+      success: function(object) {
+        console.log(object);
+
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
+  }
+
+  // TEMP HARDCODE: Transfer Origin Story From Vault
+  function transferItemOriginFromVault(headers, firstCharacter, type, sortedVault, characterInv) {
+    var firstCharacterString = firstCharacter.toString();
+    selectedTransferItem;
+    let transferItem = {
+      "itemReferenceHash": '1644162710',
+      "stackSize": 1,
+      "transferToVault": false,
+      "itemId": '6917529043083550317',
+      "characterId": firstCharacterString,
+      "membershipType": type
+    }
+
+    $.ajax({
+      type: 'POST',
+      headers: headers,
+      contentType: "json",
+      data: JSON.stringify(transferItem),
+      url: "https://www.bungie.net/Platform/Destiny2/Actions/Items/TransferItem/",
+      success: function(object) {
+        console.log(object);
 
       },
       error: function(err) {
