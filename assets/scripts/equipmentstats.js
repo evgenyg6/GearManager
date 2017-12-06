@@ -191,7 +191,7 @@ $(document).ready(function() {
     });
 
 
-  }, 10000);
+  }, 15000);
 
 
 
