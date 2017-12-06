@@ -528,7 +528,7 @@ $(document).ready(function() {
     let firstCharacterString = firstCharacter.toString();
     //selectedEquipItem;
     let equipItemToChar = {
-      "itemId": '6917529042933998211',
+      "itemId": '6917529043811268471',
       "characterId": firstCharacterString,
       "membershipType": type
     }
@@ -612,7 +612,7 @@ $(document).ready(function() {
       "itemReferenceHash": '1644162710',
       "stackSize": 1,
       "transferToVault": true,
-      "itemId": '6917529042933998211',
+      "itemId": '6917529043811268471',
       "characterId": firstCharacterString,
       "membershipType": type
     }
@@ -640,7 +640,7 @@ $(document).ready(function() {
       "itemReferenceHash": '1644162710',
       "stackSize": 1,
       "transferToVault": false,
-      "itemId": '6917529042933998211',
+      "itemId": '6917529043811268471',
       "characterId": firstCharacterString,
       "membershipType": type
     }
