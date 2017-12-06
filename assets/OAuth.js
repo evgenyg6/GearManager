@@ -96,6 +96,10 @@ $(document).ready(function() {
           equipItemOrigin(headers, firstCharacter, type)
         });
 
+        $("#midaToVault").click(function() {
+          transferItemMidaToVault(headers, firstCharacter, type)
+        });
+
       },
       error: function(err) {
         console.log(err);
@@ -481,7 +485,6 @@ $(document).ready(function() {
 
 
 
-
       },
       error: function(err) {
         console.log(err);
@@ -491,7 +494,7 @@ $(document).ready(function() {
 
 
 
-  function equipItemMida(headers, firstCharacter, type, characterInv, characterEquip) {
+  function equipItemMida(headers, firstCharacter, type) {
     let firstCharacterString = firstCharacter.toString();
     //selectedEquipItem;
     let equipItemToChar = {
@@ -517,7 +520,7 @@ $(document).ready(function() {
   }
 
   // TEMP HARDCODE: Equip MIDA Multi Tool
-  function equipItemOrigin(headers, firstCharacter, type, characterInv, characterEquip) {
+  function equipItemOrigin(headers, firstCharacter, type) {
     let firstCharacterString = firstCharacter.toString();
     //selectedEquipItem;
     let equipItemToChar = {
@@ -542,7 +545,7 @@ $(document).ready(function() {
     })
   }
   // TEMP HARDCODE: Transfer MIDA To Vault
-  function transferItemMidaToVault(headers, firstCharacter, type, sortedVault, characterInv) {
+  function transferItemMidaToVault(headers, firstCharacter, type, sortedVault, sortedCharInv) {
     var firstCharacterString = firstCharacter.toString();
     //selectedTransferItem;
     let transferItem = {
@@ -570,7 +573,7 @@ $(document).ready(function() {
   }
 
   // TEMP HARDCODE: Transfer MIDA From Vault
-  function transferItemMidaFromVault(headers, firstCharacter, type, sortedVault, characterInv) {
+  function transferItemMidaFromVault(headers, firstCharacter, type, sortedVault, sortedCharInv) {
     var firstCharacterString = firstCharacter.toString();
     //selectedTransferItem;
     let transferItem = {
@@ -598,7 +601,7 @@ $(document).ready(function() {
   }
 
   // TEMP HARDCODE: Transfer Origin Story To Vault
-  function transferItemOriginToVault(headers, firstCharacter, type, sortedVault, characterInv) {
+  function transferItemOriginToVault(headers, firstCharacter, type, sortedVault, sortedCharInv) {
     var firstCharacterString = firstCharacter.toString();
     //selectedTransferItem;
     let transferItem = {
@@ -626,9 +629,9 @@ $(document).ready(function() {
   }
 
   // TEMP HARDCODE: Transfer Origin Story From Vault
-  function transferItemOriginFromVault(headers, firstCharacter, type, sortedVault, characterInv) {
+  function transferItemOriginFromVault(headers, firstCharacter, type, sortedVault, sortedCharInv) {
     var firstCharacterString = firstCharacter.toString();
-    selectedTransferItem;
+
     let transferItem = {
       "itemReferenceHash": '1644162710',
       "stackSize": 1,
