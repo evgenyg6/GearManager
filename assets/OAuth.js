@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
   var apiKey = "9a29535463e94dd284e033d5618eb1d5";
+  let accessToken;
+  let headers;
 
   if (window.location.href.indexOf("code") > -1) {
     var url = window.location.href
@@ -20,8 +22,8 @@ $(document).ready(function() {
       url: 'https://www.bungie.net/Platform/App/OAuth/Token/',
       data: data,
       success: function(object) {
-        const accessToken = Object.values(object)[0];
-        const headers = {
+        accessToken = Object.values(object)[0];
+        headers = {
           Authorization: 'Bearer ' + accessToken,
           'X-API-Key': apiKey
         };
@@ -627,6 +629,9 @@ $(document).ready(function() {
       }
     })
   }
+
+  console.log(headers)
+  console.log(accessToken)
 
 
 });
