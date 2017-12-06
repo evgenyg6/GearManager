@@ -247,7 +247,7 @@ $(document).ready(function() {
         var mida = 'https://www.bungie.net' + allEquipIcons[0]
           // for displaying items on page
         console.log(allEquipNames, allEquipTiers, allEquipDesc, allEquipStats, allEquipIcons);
-        $('<div/>').attr('id', 'kinetic').addClass('kinetic').css('background-image', 'url(' + mida + ')').appendTo('#container');
+        $('<div/>').attr('id', 'kinetic').addClass('kinetic moveGear').css('background-image', 'url(' + mida + ')').appendTo('#container');
       },
       error: function(err) {
         console.log(err);
