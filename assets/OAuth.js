@@ -75,7 +75,7 @@ $(document).ready(function() {
         getCharacters(headers, firstCharacter, secondCharacter, thirdCharacter, characterURL);
         getCurrency(headers, currencyURL);
         getCharacterEquip(headers, characterEquip, firstCharacter);
-        getCharacterInv(headers, characterInv, firstCharacter);
+        /*getCharacterInv(headers, characterInv, firstCharacter);*/
         /*getCharacterVault(headers, characterVault);*/
       },
       error: function(err) {
