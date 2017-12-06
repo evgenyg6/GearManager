@@ -100,6 +100,10 @@ $(document).ready(function() {
           transferItemMidaToVault(headers, firstCharacter, type)
         });
 
+        $("#transferMIDA").click(function() {
+          transferItemMidaFromVault(headers, firstCharacter, type)
+        });
+
       },
       error: function(err) {
         console.log(err);
