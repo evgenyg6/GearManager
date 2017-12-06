@@ -248,6 +248,23 @@ $(document).ready(function() {
           // for displaying items on page
         console.log(allEquipNames, allEquipTiers, allEquipDesc, allEquipStats, allEquipIcons);
         $('<div/>').attr('id', 'kinetic').addClass('kinetic moveGear').css('background-image', 'url(' + mida + ')').appendTo('#container');
+
+        $("#equipMida").click(function() {
+          alert("Handler for .click() called.");
+        });
+
+        $("#sendToVault").click(function() {
+          alert("Handler for .click() called.");
+        });
+
+        $("#grabFromVault").click(function() {
+          alert("Handler for .click() called.");
+        });
+
+        $("#equipOriginStory").click(function() {
+          alert("Handler for .click() called.");
+        });
+
       },
       error: function(err) {
         console.log(err);
