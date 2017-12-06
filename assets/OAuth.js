@@ -245,7 +245,7 @@ $(document).ready(function() {
         }
         // for displaying items on page
         console.log(allEquipNames, allEquipTiers, allEquipDesc, allEquipStats, allEquipIcons);
-
+        $('<div/>').attr('id', 'kinetic').addClass('kinetic').appendTo('#container');
       },
       error: function(err) {
         console.log(err);
