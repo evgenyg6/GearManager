@@ -601,9 +601,9 @@ $(document).ready(function() {
   }
 
   // TEMP HARDCODE: Transfer Origin Story To Vault
-  function transferItemOriginToVault(headers, firstCharacter, type, sortedVault, sortedCharInv) {
+  // TEMP HARDCODE: Transfer Origin Story To Vault
+  function transferItemOriginToVault(headers, firstCharacter, type) {
     var firstCharacterString = firstCharacter.toString();
-    //selectedTransferItem;
     let transferItem = {
       "itemReferenceHash": '1644162710',
       "stackSize": 1,
@@ -629,14 +629,14 @@ $(document).ready(function() {
   }
 
   // TEMP HARDCODE: Transfer Origin Story From Vault
-  function transferItemOriginFromVault(headers, firstCharacter, type, sortedVault, sortedCharInv) {
+  // TEMP HARDCODE: Transfer Origin Story From Vault
+  function transferItemOriginFromVault(headers, firstCharacter, type) {
     var firstCharacterString = firstCharacter.toString();
-
     let transferItem = {
       "itemReferenceHash": '1644162710',
       "stackSize": 1,
       "transferToVault": false,
-      "itemId": '6917529043083550317',
+      "itemId": '6917529042933998211',
       "characterId": firstCharacterString,
       "membershipType": type
     }
@@ -657,8 +657,6 @@ $(document).ready(function() {
     })
   }
 
-  console.log(headers)
-  console.log(accessToken)
 
 
 });
