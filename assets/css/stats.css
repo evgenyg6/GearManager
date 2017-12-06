@@ -1,0 +1,157 @@
+.gearTitle {
+  padding:3%;
+  padding-bottom:2%;
+  line-height: 1.9em;
+  background-color: rgba(82,47,101,0.5);
+
+}
+
+.gearProperties {
+  background-color: rgba(16,13,17,0.5);
+  padding-left:3%;
+  line-height: 2.5em;
+  border-bottom: 1px solid lightgrey;
+}
+
+.gearStats {
+  background-color: rgba(16,13,17,0.5);
+  padding-left:3%;
+  line-height: 2.5em;
+  border-bottom: 1px solid lightgrey;
+  padding-top: 3%;
+  padding-bottom: 4%;
+}
+
+.gearName {
+  display: block;
+  color:white;
+  font-size: 2em;
+  font-weight: 500;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.gearType {
+  position: relative;
+  color:white;
+  font-size: 1.2em;
+  opacity: 0.5;
+}
+
+.gearCommon {
+  float:right;
+  opacity: 0.1;
+  color: white;
+  font-size: 1.2em;
+}
+
+.gearRequire {
+  display: block;
+  color: lightgrey;
+  font-size: 1.2em;
+}
+
+.arcImage {
+  width:2.4em;
+  height:2.4em;
+}
+
+.attackValue {
+  position: relative;
+  font-size:3em;
+  font-weight: 700;
+  color:#79bbe8;
+  font-family: 'Arial';
+  margin-left:2%;
+}
+
+.attack {
+  position: absolute;
+  font-size: 1em;
+  color:#79bbe8;
+  margin-left:2%;
+  margin-top: 1%;
+  font-family: 'Arial';
+
+}
+
+.gearDescription {
+  display: block;
+  color: lightgrey;
+  font-size: 1.2em;
+  font-style: italic;
+  line-height: 0.5em;
+  margin-bottom: 5%;
+}
+
+.statProperty {
+  position: relative;
+  display: block;
+  right:58%;
+  color: lightgrey;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  text-align: right;
+
+}
+
+.impact {
+  position: absolute;
+  top:46.1%;
+  left:47%;
+  width:45%;
+  height:1em;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.range {
+  position: absolute;
+  top:50.9%;
+  left:47%;
+  width:45%;
+  height:1em;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.stability {
+  position: absolute;
+  top:55.7%;
+  left:47%;
+  width:45%;
+  height:1em;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.handling {
+  position: absolute;
+  top:60.5%;
+  left:47%;
+  width:45%;
+  height:1em;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.reload {
+  position: absolute;
+  top:65.3%;
+  left:47%;
+  width:45%;
+  height:1em;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.rpm {
+  position: absolute;
+  top:68%;
+  left:47%;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.magazine {
+  position: absolute;
+  top:72.7%;
+  left:47%;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
