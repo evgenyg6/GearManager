@@ -84,6 +84,18 @@ $(document).ready(function() {
           equipItemMida(headers, firstCharacter, type);
         });
 
+        $("#sendToVault").click(function() {
+          transferItemOriginToVault(headers, firstCharacter, type)
+        });
+
+        $("#grabFromVault").click(function() {
+          transferItemOriginFromVault(headers, firstCharacter, type)
+        });
+
+        $("#equipOriginStory").click(function() {
+          equipItemOrigin(headers, firstCharacter, type)
+        });
+
       },
       error: function(err) {
         console.log(err);
@@ -256,17 +268,7 @@ $(document).ready(function() {
 
 
 
-        $("#sendToVault").click(function() {
-          alert("Handler for .click() called.");
-        });
 
-        $("#grabFromVault").click(function() {
-          alert("Handler for .click() called.");
-        });
-
-        $("#equipOriginStory").click(function() {
-          alert("Handler for .click() called.");
-        });
 
       },
       error: function(err) {
