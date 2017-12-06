@@ -99,8 +99,10 @@ $(document).ready(function() {
   });
 
 
+  setTimeout(function() {
 
-  if ($('#kinetic').length) {
+
+
     $('#kinetic').on('mouseenter', function(e) {
       $('<div/>').addClass('gearContainer').appendTo('#container')
       $('<div/>').addClass('gearTitle').appendTo('.gearContainer')
@@ -188,8 +190,8 @@ $(document).ready(function() {
       $('.gearContainer').remove();
     });
 
-  }
 
+  }, 5000);
 
 
 
