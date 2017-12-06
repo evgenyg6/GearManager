@@ -10,6 +10,10 @@ body {
   cursor:url(../media/images/arrow.png), auto;
 }
 
+#container {
+  max-width: 100vw;
+}
+
 .nav {
   width:100vw;
   height:2em;
@@ -325,4 +329,24 @@ opacity:0.8;
   background-image:url('https://www.bungie.net/common/destiny2_content/icons/2c9b1a4c6b2b3eab638abfbccbbfdd77.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
+}
+
+.btn {
+  position: absolute;
+  left:5%;
+  top:50%;
+  border-radius: 1px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #3498db;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border:none;
+}
+
+.btn:hover {
+  background: #5e798a;
+  text-decoration: none;
+  cursor: pointer;
 }
