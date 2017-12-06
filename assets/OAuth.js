@@ -79,6 +79,11 @@ $(document).ready(function() {
         getCharacterEquip(headers, characterEquip, firstCharacter);
         /*getCharacterInv(headers, characterInv, firstCharacter);*/
         /*getCharacterVault(headers, characterVault);*/
+
+        $("#equipMida").click(function() {
+          equipItemMida(headers, firstCharacter, type);
+        });
+
       },
       error: function(err) {
         console.log(err);
@@ -249,9 +254,7 @@ $(document).ready(function() {
         console.log(allEquipNames, allEquipTiers, allEquipDesc, allEquipStats, allEquipIcons);
         $('<div/>').attr('id', 'kinetic').addClass('kinetic moveGear').css('background-image', 'url(' + mida + ')').appendTo('#container');
 
-        $("#equipMida").click(function() {
-          alert("Handler for .click() called.");
-        });
+
 
         $("#sendToVault").click(function() {
           alert("Handler for .click() called.");
